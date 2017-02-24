@@ -1,4 +1,4 @@
-# My Digital Company
+# Introduction
 
 Today, there are several trends that are forcing application architectures to evolve. Users expect a rich, interactive and dynamic user experience on a wide variety of clients including mobile devices. Applications must be highly scalable, highly available and run on cloud environments. Organizations often want to frequently roll out updates, even multiple times a day. Consequently, it’s no longer adequate to develop simple, monolithic web applications that serve up HTML to desktop browsers.
 
