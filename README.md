@@ -36,9 +36,7 @@ The twelve-factor app is a methodology for building cloud-native applications th
 
 ## Continuous delivery and deployment
 
-It is important to remember, however, that the microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
+The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
 
 ![](/assets/successtriangle.png)
-
-
 
