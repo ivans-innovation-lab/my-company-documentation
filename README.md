@@ -34,5 +34,11 @@ The twelve-factor app is a methodology for building cloud-native applications th
 
 * And can scale up without significant changes to tooling, architecture, or development practices.This file file serves as your book's preface, a great place to describe your book's content and ideas.
 
+## Continuous delivery and deployment
+
+It is important to remember, however, that the microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
+
+![](/assets/successtriangle.png)
+
 
 
