@@ -2,5 +2,7 @@
 
 * [Introduction](README.md)
 * [Part I - The architecture](chapter1.md)
-* [Part II - The organization](part-ii-the-organization.md)
+* [Part II - The organziation](/chapter2.md)
+
+
 
