@@ -11,6 +11,7 @@ We are developing a server-side enterprise application. It will support a variet
 ## Benefits of a monolithic architecture
 
 * Simple to develop - the goal of current development tools and IDEs is to support the development of monolithic applications
+
 * Simple to deploy - you simply need to deploy the WAR file \(or directory hierarchy\) on the appropriate runtime
 * Simple to scale - you can scale the application by running multiple copies of the application behind a load balancer
 
