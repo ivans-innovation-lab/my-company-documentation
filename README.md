@@ -8,9 +8,9 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 To accomplish this we need the trio of microservices, DevOps, and continuous delivery.
 
-* [Microservices](/chapter1.md) is the architecture,
+* [Microservices](//chapter1/README.md) is the architecture,
 * [A specific organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
-* and continuous delivery is the [process](/chapter3.md).
+* and continuous delivery is the [process](//chapter3/README.md).
 
 The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
 
