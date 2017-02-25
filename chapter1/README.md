@@ -6,15 +6,5 @@ When organizations make the choice to put a digital platform in place, a discuss
 
 A Microservices architecture style brings a lot of operations overhead. Where a monolithic application might have been deployed to a small application server cluster, you now have tens of separate services to build, test, deploy and run, potentially in polyglot languages and environments.
 
-#### Cloud {#cloud}
 
-If you look at the concerns typically expressed about microservices, you will find that they are exactly the challenges that a PaaS \(Platform As A Service\) is intended to address.
-
-PaaS offerings like [Cloud Foundry](https://www.cloudfoundry.org/) have raised the level of abstraction to a focus on an ecosystem of applications and services. Cloud Foundry is open source and it can be deployed on private or public \(IaaS\) infrastructure.
-
-Linux container technology, such as [Docker](https://www.docker.com/), can be used to streamline the development, testing and deployment experience. The Docker platform empowers you to build a [CaaS](https://blog.docker.com/2016/02/containers-as-a-service-caas/) \(Containers as a service\) that fits your business requirements.
-
-#### Cloud native {#cloud-native}
-
-A cloud-native application is an application that has been designed and implemented to run on a PaaS or CaaS installation, and to embrace horizontal elastic scaling.
 
