@@ -6,7 +6,7 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 ## The trio - architecture, oranization & process {#the-trio---architecture-culture--process}
 
-To accomplish this we need the trio of microservices, organization \(culture\), and continuous delivery.
+To support this we need the trio of microservices, organization \(culture\), and continuous delivery.
 
 * Microservices is the [architecture](//chapter1/README.md),
 * [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
