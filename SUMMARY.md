@@ -6,6 +6,8 @@
   * [Visualize your Architecture](/chapter1/visualize-your-architecture.md)
   * [Monolithic Architecture](/chapter1/monolithic/README.md)
     * [Architecture Overview](/chapter1/monolithic/overview.md)
+  * [Microservice Architecture](/chapter1/microservices/README.md)
+    * [Architecture Overview](/chapter1/microservices/overview.md)
 * [Chapter 2 - The organization](/chapter2/README.md)
 * [Chapter 3 - The process](/chapter3/README.md)
 
