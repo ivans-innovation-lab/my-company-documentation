@@ -4,7 +4,9 @@ The microservice architectural style is an approach to developing a single appli
 
 When organizations make the choice to put a digital platform in place, a discussion on Microservices is never far behind. By putting a Microservices layer in place, an organization creates the springboard to launch into the digital future, whether that involves apps, rich Web clients, or IoT devices such as in-store beacons. Individual Microservices, or orchestrated groups of Microservices, serve as the foundation for this innovation. The data being passed to and from Microservices also serves as the basis for behavioral analytics and Big Data, allowing organizations to tailor their digital services based on their users.
 
-A Microservices architecture style brings a lot of operations overhead. Where a monolithic application might have been deployed to a small application server cluster, you now have tens of separate services to build, test, deploy and run, potentially in polyglot languages and environments.
+If you pick the Microservice [architecture pattern](//chapter1/architecture-patterns-and-best-practices.md) you must choose numerous other patterns to deal with the consequences of your decision.
+
+
 
 
 
