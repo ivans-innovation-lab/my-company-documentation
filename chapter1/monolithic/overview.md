@@ -4,5 +4,3 @@
 
 
 
-![](/assets/systemContext.png)
-
