@@ -4,7 +4,7 @@ For some executives, it’s about technology. For others, digital is a new way o
 
 It’s tempting to look for simple definitions, but to be meaningful and sustainable, I believe that digital should be seen less as a thing and more a way of doing things. To help make this definition more concrete, I have broken it down into three attributes: creating value at the new frontiers of the business world, creating value in the processes that execute a vision of customer experiences, and building foundational capabilities that support the entire structure.
 
-## The trio - architecture, culture & process {#the-trio---architecture-culture--process}
+## The trio - architecture, oranization & process {#the-trio---architecture-culture--process}
 
 To accomplish this we need the trio of microservices, DevOps, and continuous delivery.
 
