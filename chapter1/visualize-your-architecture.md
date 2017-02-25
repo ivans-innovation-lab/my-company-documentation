@@ -8,13 +8,3 @@ The "C4 model" is a simple hierarchical way to think about the static structures
 
 Visualising this hierarchy is then done by creating a collection of **System Context**, **Container**, **Component **and \(optionally\) **Class **diagrams. Structurizr is an implementation of the System Context, Container and Component diagrams.
 
-## System Context
-
-This is a system context diagram for the 'My Company' application. A software system is the highest level of abstraction and describes something that delivers value to its users. This includes the software system you are modelling, and the other software systems upon which your software system depends.![](/assets/context-diagram.png)
-
-## 
-
-## 
-
-
-
