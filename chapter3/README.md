@@ -1,4 +1,4 @@
-# Part III - The Process
+# Chapter 3 - The Process
 
 The idea of automated deployment is important. Indeed, if you take automating the deployment process to its logical conclusion, you could push every build that passes the necessary automated tests into production. The practice of automatically deploying every successful build directly into production is generally known as Continuous Deployment.
 
