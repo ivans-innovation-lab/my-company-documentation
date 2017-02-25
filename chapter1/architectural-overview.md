@@ -10,7 +10,7 @@ Visualising this hierarchy is then done by creating a collection of **System Con
 
 ## System Context
 
-This is a system context diagram for the 'My Company' application.![](/assets/context-diagram.png)
+This is a system context diagram for the 'My Company' application. A software system is the highest level of abstraction and describes something that delivers value to its users. This includes the software system you are modelling, and the other software systems upon which your software system depends.![](/assets/context-diagram.png)
 
 ## 
 
