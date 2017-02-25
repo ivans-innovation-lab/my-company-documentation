@@ -2,7 +2,7 @@
 
 A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise. The term was coined by architect [Christopher Alexander](https://en.wikipedia.org/wiki/Christopher_Alexander) and popularized by his 1977 book [A Pattern Language](https://en.wikipedia.org/wiki/A_Pattern_Language)
 
-Please visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson. Experienced software architect, author of POJOs in Action and the creator of the original CloudFoundry.com. His latest startup is [eventuate.io](http://eventuate.io/), a microservices application platform.
+Visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson. Experienced software architect, author of POJOs in Action and the creator of the original CloudFoundry.com. His latest startup is [eventuate.io](http://eventuate.io/), a microservices application platform.
 
 ![](/assets/MicroservicePatternLanguage.jpg)
 
