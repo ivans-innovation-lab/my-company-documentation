@@ -4,6 +4,10 @@ Once we understand the architecture pattern language and we know how to visualiz
 
 [Monolithic Architecture pattern](http://microservices.io/patterns/monolithic.html) and the [Microservice Architecture pattern](http://microservices.io/patterns/microservices.html) are alternative ways of architecting an application. You pick one or the other.
 
+## Context {#context}
+
+We are developing a server-side enterprise application. It will support a variety of different clients including desktop browsers, mobile browsers and native mobile applications. The application will also expose an API for 3rd parties to consume. It might also integrate with other applications via either web services or a message broker. The application handles requests \(HTTP requests and messages\) by executing business logic; accessing a database; exchanging messages with other systems; and returning a HTML/JSON/XML response. There are logical components corresponding to different functional areas of the application.
+
 ## Benefits of a monolithic architecture
 
 * Simple to develop - the goal of current development tools and IDEs is to support the development of monolithic applications
