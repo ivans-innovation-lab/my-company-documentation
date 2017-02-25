@@ -9,13 +9,13 @@ I strongly believe that one should start with Monolithic pattern first, and once
 * Make your components more loosely coupled. 
 * Consider applying Domain Driven Design with Event Sourcing and CQRS.
 
-## Key Benefits of a monolithic architecture
+## Benefits of a monolithic architecture
 
 * Simple to develop - the goal of current development tools and IDEs is to support the development of monolithic applications
 * Simple to deploy - you simply need to deploy the WAR file \(or directory hierarchy\) on the appropriate runtime
 * Simple to scale - you can scale the application by running multiple copies of the application behind a load balancer
 
-## Key Drawbacks of a monolithic architecture
+## Drawbacks of a monolithic architecture
 
 * The large monolithic code base intimidates developers, especially ones who are new to the team. The application can be difficult to understand and modify. As a result, development typically slows down. Also, because there are not hard module boundaries, modularity breaks down over time. Moreover, because it can be difficult to understand how to correctly implement a change the quality of the code declines over time. It’s a downwards spiral.
 * Continuous deployment is difficult - a large monolithic application is also an obstacle to frequent deployments. In order to update one component you have to redeploy the entire application. This will interrupt background tasks \(e.g. Quartz jobs in a Java application\), regardless of whether they are impacted by the change, and possibly cause problems. There is also the chance that components that haven’t been updated will fail to start correctly. As a result, the risk associated with redeployment increases, which discourages frequent updates. This is especially a problem for user interface developers, since they usually need to iterative rapidly and redeploy frequently.
