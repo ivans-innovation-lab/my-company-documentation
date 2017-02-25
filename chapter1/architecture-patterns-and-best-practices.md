@@ -6,9 +6,9 @@ Visit the [Microservices.io](http://microservices.io/) for more details about ar
 
 ![](/assets/MicroservicePatternLanguage.jpg)
 
-## Applying the architecture pattern language
+## The architecture pattern language
 
-The 'microservice' architecture pattern language consists of numerous groups of patterns. The value of a pattern language exceeds the sum of it’s individual patterns because it defines these relationships between the patterns:
+The architecture pattern language consists of numerous groups of patterns. **The value of a pattern language exceeds the sum of it’s individual patterns because it defines these relationships between the patterns:**
 
 * Predecessor – a predecessor pattern is a pattern that motivates the need for this pattern. For example, the Microservice Architecture pattern is the predecessor to the rest of the patterns in the pattern language except the monolithic architecture pattern.
 
@@ -16,7 +16,9 @@ The 'microservice' architecture pattern language consists of numerous groups of 
 
 * Alternative – a pattern that provides an alternative solution to this pattern. For example, the Monolithic Architecture pattern and the Microservice Architecture pattern are alternative ways of architecting an application. You pick one or the other. These relationships provide valuable guidance when using a pattern language. Applying a pattern creates issues that you must then address by applying successor patterns. The selection of patterns continuously recursively until you reach patterns with no successor. If two or more patterns are alternatives then you must typically pick just one. In many ways, this is similar to traversing a graph.
 
-Let’s look at how you can **apply the 'microservice' architecture pattern language to architect your application**. We will look at 3 critical decisions you must make.
+### Apply the microservice architecture pattern language - example
+
+Let’s look at how you can apply the microservice architecture pattern language to architect your application. We will look at 3 critical decisions you must make.
 
 1. The first decision you must make is whether to use a [Monolithic architecture pattern](http://microservices.io/patterns/monolithic.html) or the [Microservice architecture pattern](http://microservices.io/patterns/microservices.html). **If you pick the Microservice architecture pattern you must choose numerous other patterns to deal with the consequences of your decision.**
 
