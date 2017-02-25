@@ -20,7 +20,7 @@ Once we understand the architecture pattern language and we know how to visualiz
 
 ## Start with Monolithic
 
-I strongly believe that we should start with Monolithic pattern first, and once the drawbacks of this approach overrun the benefits you should switch to Microservices pattern. For this to happen smoothly you should design your monolith in a way so you can easily switch to microservices:
+I strongly believe that we should start with the Monolithic pattern first, and once the drawbacks of this approach overrun the benefits you should switch to the Microservice pattern. For this to happen smoothly you should design your monolith in a way so you can easily switch to microservices:
 
 * Make your components more loosely coupled. There is a good chance that your components will become services within microservice architecture.
 * Consider applying Domain Driven Design with Event Sourcing and CQRS.
