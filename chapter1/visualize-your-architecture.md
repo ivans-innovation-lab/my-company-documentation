@@ -1,4 +1,4 @@
-# Architectural Overview {#architectural-overview}
+# Visualize your architecture {#architectural-overview}
 
 I like [Software Architecture for Developers ](https://leanpub.com/b/software-architecture)by Simon Brown - a developer-friendly guide to software architecture, technical leadership and the balance with agility. Simon is also the creator of the [C4 software architecture model](https://structurizr.com/help/c4)** **and he built [Structurizr](https://structurizr.com/), which is a collection of tooling to help software teams visualise, document and explore their software architecture.
 
