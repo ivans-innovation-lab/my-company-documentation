@@ -33,12 +33,5 @@ I strongly believe that we should start with the Monolithic pattern first, and o
 
 ## Legacy Systems
 
-Sometimes is not possible to start from scratch. It’s safe to say that any company who was writing software ten years ago—and is building [microservices](http://martinfowler.com/articles/microservices.html) today—will need to integrate with [legacy systems](https://en.wikipedia.org/wiki/Legacy_system). In this case you already have a monolithic application \(a big ball of mud\) and you should use practices from Martin Fowler’s [Strangler Application](http://www.martinfowler.com/bliki/StranglerApplication.html) to slowly strangle domain data away from a legacy system using microservices.
-
-  
-
-
-
-
-
+Sometimes is not possible to start from scratch. It’s safe to say that any company who was writing software ten years ago—and is building microservices today—will need to integrate with [legacy systems](https://en.wikipedia.org/wiki/Legacy_system). In this case you already have a monolithic application \(a big ball of mud\) and you should use practices from Martin Fowler’s [Strangler Application](http://www.martinfowler.com/bliki/StranglerApplication.html) to slowly strangle domain data away from a legacy system using microservices.
 
