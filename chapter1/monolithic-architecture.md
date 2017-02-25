@@ -13,6 +13,7 @@ We are developing a server-side enterprise application. It will support a variet
 * Simple to develop - the goal of current development tools and IDEs is to support the development of monolithic applications
 
 * Simple to deploy - you simply need to deploy the WAR file \(or directory hierarchy\) on the appropriate runtime
+
 * Simple to scale - you can scale the application by running multiple copies of the application behind a load balancer
 
 ## Drawbacks of a monolithic architecture
@@ -25,7 +26,7 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Start with Monolithic
 
-I strongly believe that we should start with the Monolithic pattern first, and once the drawbacks of this approach overrun the benefits you should switch to the Microservice pattern. For this to happen smoothly you should design your monolith in a way so you can easily switch to microservices:
+I strongly believe that we should start with the Monolithic pattern first, and once the [drawbacks](#drawbacks-of-a-monolithic-architecture) of this approach overrun the [benefits](#benefits-of-a-monolithic-architecture) you should switch to the Microservice pattern. For this to happen smoothly you should design your monolith in a way so you can easily switch to microservices:
 
 * Make your components more loosely coupled.
 * Consider applying Domain Driven Design with Event Sourcing and CQRS.
