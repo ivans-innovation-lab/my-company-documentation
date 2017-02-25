@@ -1,4 +1,4 @@
-# Architecture Patterns and Best Practices
+# Architecture Patterns And Best Practices
 
 A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise. The term was coined by architect [Christopher Alexander](https://en.wikipedia.org/wiki/Christopher_Alexander) and popularized by his 1977 book [A Pattern Language](https://en.wikipedia.org/wiki/A_Pattern_Language)
 
@@ -6,7 +6,7 @@ Visit the [Microservices.io](http://microservices.io/) for more details about ar
 
 ![](/assets/MicroservicePatternLanguage.jpg)
 
-## The architecture pattern language
+## The Architecture Pattern Language
 
 The architecture pattern language consists of numerous groups of patterns. **The value of a pattern language exceeds the sum of it’s individual patterns because it defines these relationships between the patterns:**
 
@@ -16,7 +16,7 @@ The architecture pattern language consists of numerous groups of patterns. **The
 
 * Alternative – a pattern that provides an alternative solution to this pattern. For example, the Monolithic Architecture pattern and the Microservice Architecture pattern are alternative ways of architecting an application. You pick one or the other. These relationships provide valuable guidance when using a pattern language. Applying a pattern creates issues that you must then address by applying successor patterns. The selection of patterns continuously recursively until you reach patterns with no successor. If two or more patterns are alternatives then you must typically pick just one. In many ways, this is similar to traversing a graph.
 
-### Apply the microservice architecture pattern language - example
+### Apply The Microservice Architecture Pattern Language - Example
 
 Let’s look at how you can apply the microservice architecture pattern language to architect your application. We will look at 3 critical decisions you must make.
 
