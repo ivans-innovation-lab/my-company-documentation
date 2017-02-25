@@ -9,5 +9,3 @@
 
 
 
-![](/assets/systemContext.png)
-
