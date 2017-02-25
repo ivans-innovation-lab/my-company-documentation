@@ -12,9 +12,9 @@ Visualising this hierarchy is then done by creating a collection of **System Con
 
 This is a system context diagram for the 'My Company' application.![](/assets/context-diagram.png)
 
-## ![](/assets/context-diagram.png)
+## 
 
-## ![](/assets/context-diagram.png)
+## 
 
 
 
