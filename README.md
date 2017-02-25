@@ -8,7 +8,7 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 To accomplish this we need the trio of microservices, organization \(culture\), and continuous delivery.
 
-* [Microservices](//chapter1/README.md) is the architecture,
+* Microservices is the [architecture](//chapter1/README.md),
 * [A specific organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
 * and continuous delivery is the [process](//chapter3/README.md).
 
