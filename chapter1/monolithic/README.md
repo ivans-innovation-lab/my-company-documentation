@@ -31,7 +31,7 @@ I believe that we should start with the Monolithic pattern first, and once the [
 * Make your components more loosely coupled.
 * Consider applying Domain Driven Design with Event Sourcing and CQRS patterns.
 
-Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be strangled in the future, you are enabling the graceful fading away of today's work.
+Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be [strangled](#strangling-legacy-systems) in the future, you are enabling the graceful fading away of today's work.
 
 ## Strangling Legacy Systems
 
