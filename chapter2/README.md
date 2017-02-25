@@ -1,4 +1,4 @@
-# Chapter 2 - The Organization
+# Chapter 2 - Organization
 
 With the uptake of microservices and containers new challenges are rising: “How can we manage aspects such as API contracts?” and “How can we apply changes across several repositories at once?”. Those challenges highlight the need for greater collaboration between, and within, teams.
 
