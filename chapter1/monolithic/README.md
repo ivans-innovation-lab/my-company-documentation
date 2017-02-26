@@ -26,9 +26,9 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Start With The Monolithic Pattern
 
-I believe that we should start with the Monolithic pattern first, and once the [drawbacks](#drawbacks-of-a-monolithic-architecture) of this approach overrun the [benefits](#benefits-of-a-monolithic-architecture) you should switch to the Microservice pattern. For this to happen smoothly, you should design your monolith in a way so you can easily switch to microservices:
+I believe that we should start with the Monolithic pattern first, and once the [drawbacks](#drawbacks-of-a-monolithic-architecture) of this approach overrun the [benefits](#benefits-of-a-monolithic-architecture) we will switch to the Microservice pattern. For this to happen smoothly, we should design our monolith in a way so we can easily switch to microservices:
 
-* Make your components more loosely coupled.
+* Make components more loosely coupled.
 * Consider applying Domain Driven Design with Event Sourcing and CQRS patterns.
 
 Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be [strangled](#strangling-legacy-systems) in the future, you are enabling the graceful fading away of today's work.
