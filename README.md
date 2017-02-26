@@ -16,7 +16,7 @@ This foundation is made up of three elements: software architecture, organizatio
 * [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
 * and continuous delivery is the [process](//chapter3/README.md).
 
-The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
+The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product. 
 
 ![](/assets/successtriangle.png)
 
@@ -31,5 +31,11 @@ The source code of the application is hosted on the [Github](https://github.com/
 * [documentation](https://github.com/ivans-innovation-lab/my-company-documentation)
 * business domain
 
+## What you will learn
 
+You will find the value of an architecture pattern language - specifically you will gain knowledge about many different patterns, and you will better understand the relations between them. This will enable you to make better discussions \(monolithic or microservices\).
+
+You will learn how to visualise, document and explore  software architecture.
+
+You will get your hands dirty with the code - we will implement fully functional monolithic application first, and after that we will migrate to alternate microservices architecture. This will give you an idea of what will have to be done in this process of migration \(regarding architecture, organization and process\) and how can we prepare for the future. Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be strangled in the future, you are enabling the graceful fading away of today's work.
 
