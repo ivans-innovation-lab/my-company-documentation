@@ -16,7 +16,7 @@ This foundation is made up of three elements: software architecture, organizatio
 * [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
 * and continuous delivery is the [process](//chapter3/README.md).
 
-The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product. 
+The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
 
 ![](/assets/successtriangle.png)
 
@@ -37,5 +37,11 @@ You will find the value of an architecture pattern language - specifically you w
 
 You will learn how to visualise, document and explore  software architecture.
 
-You will get your hands dirty with the code - we will implement fully functional monolithic application first, and after that we will migrate to alternate microservices architecture. This will give you an idea of what will have to be done in this process of migration \(regarding architecture, organization and process\) and how can we prepare for the future. Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be strangled in the future, you are enabling the graceful fading away of today's work.
+You will get your hands dirty with the code - we will implement fully functional monolithic application first, and after that we will migrate to alternate microservices architecture. You will find the answers on 
+
+* why we are migrating to microservices.
+* how we are going to migrate to microservices and how it will influence on our organization and process.
+* how can we design monolithic application to prepare better for easier migration to microservice in the future.
+
+ Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be strangled in the future, you are enabling the graceful fading away of today's work.
 
