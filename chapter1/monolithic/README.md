@@ -35,7 +35,3 @@ Let's face it, all we are doing is writing tomorrow's legacy software today. By 
 
 ![](/assets/monolithicToMicroservices (1).jpg)
 
-
-
-
-
