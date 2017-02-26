@@ -31,9 +31,11 @@ We will start with the Monolithic pattern first, and once the [drawbacks](#drawb
 * Make components more loosely coupled.
 * Consider applying Domain Driven Design with Event Sourcing and CQRS patterns.
 
-Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be [strangled](#strangling-legacy-systems) in the future, you are enabling the graceful fading away of today's work.
+Let's face it, all we are doing is writing tomorrow's legacy software today. By making it easy to be strangled in the future, you are enabling the graceful fading away of today's work.
 
-## Strangling Legacy Systems
+![](/assets/monolithicToMicroservices (1).jpg)
 
-Sometimes is not possible to start from scratch. It’s safe to say that any company who was writing software ten years ago—and is building microservices today—will need to integrate with [legacy systems](https://en.wikipedia.org/wiki/Legacy_system). In this case you already have a monolithic application \(a big ball of mud\) and you can use practices from Martin Fowler’s [Strangler Application](http://www.martinfowler.com/bliki/StranglerApplication.html) to slowly strangle domain data away from a legacy system using microservices.
+
+
+
 

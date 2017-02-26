@@ -22,3 +22,5 @@ The microservice architecture is merely a means to an end. The ultimate goal is 
 
 The microservice architecture enables teams to be agile and autonomous. Together, the team of teams and the microservice architecture  enable continuous delivery/deployment.
 
+
+
