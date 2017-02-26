@@ -8,7 +8,7 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 * creating value in the processes that execute a vision of customer experiences, 
 * and building foundational capabilities that support the entire structure.
 
-The main focus of this this book is the third part of the definition - _building foundational capabilities that support the entire structure._
+The main focus of this book is the third part of the definition - _building foundational capabilities that support the entire structure._
 
 This foundation is made up of three elements: architecture, organization \(culture\), and process.
 
