@@ -10,7 +10,7 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 The main focus of this book is the third part of the definition - _building foundational capabilities that support the entire structure._
 
-This foundation is made up of three elements: architecture, organization \(culture\), and process.
+This foundation is made up of three elements: software architecture, organization \(culture\), and process.
 
 * Microservices is the [architecture](//chapter1/README.md),
 * [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
@@ -21,6 +21,15 @@ The microservice architecture is merely a means to an end. The ultimate goal is 
 ![](/assets/successtriangle.png)
 
 The microservice architecture enables teams to be agile and autonomous. Together, the team of teams and the microservice architecture  enable continuous delivery/deployment.
+
+## Source Code
+
+The source code of the application is hosted on the [Github](https://github.com/ivans-innovation-lab). Everything is there:
+
+* [infrastructure](https://github.com/ivans-innovation-lab/jenkins-pipelines-infrastructure)
+* [delivery pipelines](https://github.com/ivans-innovation-lab/jenkins-pipelines-jobs)
+* [documentation](https://github.com/ivans-innovation-lab/my-company-documentation)
+* business domain
 
 
 
