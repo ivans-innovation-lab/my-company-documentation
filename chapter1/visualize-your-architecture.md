@@ -1,7 +1,5 @@
 # Visualize Your Architecture {#architectural-overview}
 
-.
-
 The  [C4 software architecture model](https://structurizr.com/help/c4) is a simple hierarchical way to think about the static structures of a **software system **in terms of **containers**, **components **and **classes **\(or **code**\).
 
 > A **software system **is made up of one or more **containers **\(web applications, mobile apps, standalone applications, databases, file systems, etc\), each of which contains one or more **components**, which in turn are implemented by one or more **classes**.
