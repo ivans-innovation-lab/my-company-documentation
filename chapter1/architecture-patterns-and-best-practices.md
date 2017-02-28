@@ -1,8 +1,8 @@
 # Architecture Patterns And Best Practices
 
-A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise. The term was coined by architect [Christopher Alexander](https://en.wikipedia.org/wiki/Christopher_Alexander) and popularized by his 1977 book [A Pattern Language](https://en.wikipedia.org/wiki/A_Pattern_Language)
+A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise.[ ](https://en.wikipedia.org/wiki/Christopher_Alexander)
 
-Visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson. 
+Visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson.
 
 ![](/assets/MicroservicePatternLanguage.jpg)
 
