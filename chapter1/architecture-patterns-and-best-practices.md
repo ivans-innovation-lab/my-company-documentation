@@ -1,8 +1,6 @@
 # Architecture Patterns And Best Practices
 
-A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise.[ ](https://en.wikipedia.org/wiki/Christopher_Alexander)
-
-Visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson.
+A [**pattern language**](https://en.wikipedia.org/wiki/Pattern_language)** **is a method of describing good design practices or patterns of useful organization within a field of expertise.
 
 ![](/assets/MicroservicePatternLanguage.jpg)
 
@@ -30,6 +28,8 @@ Let’s look at how you can apply the microservice architecture pattern language
    This patterns yield equivalent results: a set of services organized around business concepts rather than technical concepts.
 
 3. A key feature of the microservice is the [Database per Service pattern](http://microservices.io/patterns/data/database-per-service.html). It’s alternative, the [Shared Database pattern](http://microservices.io/patterns/data/shared-database.html) is essentially an anti-pattern and best avoided. The Database per service pattern dramatically changes how you maintain data consistency and perform queries. You will need to use one of [event-driven architecture](http://microservices.io/patterns/data/event-driven-architecture.html) patterns such as [Transaction Log tailing](http://microservices.io/patterns/data/transaction-log-tailing.html) or [Event Sourcing](http://microservices.io/patterns/data/event-sourcing.html) to maintain data consistency. You will often need to implement queries using the [Command Query Responsibility Segregation \(CQRS\)](http://microservices.io/patterns/data/cqrs.html) pattern.
+
+Visit the [Microservices.io](http://microservices.io/) for more details about architecture patterns and how to apply them. It is brought to you by Chris Richardson.
 
 
 
