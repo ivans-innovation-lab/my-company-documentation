@@ -4,7 +4,7 @@ The  [C4 software architecture model](https://structurizr.com/help/c4) is a simp
 
 > A **software system **is made up of one or more **containers **\(web applications, mobile apps, standalone applications, databases, file systems, etc\), each of which contains one or more **components**, which in turn are implemented by one or more **classes**.
 
-Visualising this hierarchy is then done by creating a collection of **System Context**, **Container**, **Component **and \(optionally\) **Class **diagrams. Structurizr is an implementation of the System Context, Container and Component diagrams.
+Visualising this hierarchy is then done by creating a collection of **System Context**, **Container**, **Component **and \(optionally\) **Class **diagrams. [Structurizr ](/www.structurizr.com)is an implementation of the System Context, Container and Component diagrams.
 
 ## System Context Diagram
 
