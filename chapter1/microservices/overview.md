@@ -50,6 +50,21 @@ A Blog service is used for manging and quering the posts of your company. It is 
 
 A Project service is used for manging and quering the projects of your company. It is split into a command-side microservice application and a query-side microservice application.
 
+### Backing services
+
+The premise is that there are third-party service dependencies that should be treated as attached resources to your cloud native applications. The key trait of backing services are that they are provided as bindings to an application in its deployment environment by a cloud platform. Each of the backing services must be located using a statically defined route
+
+#### (Service) Registry
+
+Netflix Eureka is a service registry. It provides a REST API for service instance registration management and for querying available instances. Netflix Ribbon is an IPC client that works with Eureka to load balance(client side) requests across the available service instances.
+
+#### Authorization server (Oauth2)
+
+For issuing tokens and authorize requests.
+
+#### Configuration server
+
+The configuration service is a vital component of any microservices architecture. Based on the twelve-factor app methodology, configurations for your microservice applications should be stored in the environment and not in the project.
 
 
 ## Components
