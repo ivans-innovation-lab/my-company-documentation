@@ -38,3 +38,30 @@ The **query-side** is an event-listener and processor. It listens for the `Event
 
 The command-side and the query-side containers both have REST API's which can be used to access their capabilities.
 
+## Components
+
+Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library as it was in monolithic version of this application:
+
+- Project - Command side: https://github.com/ivans-innovation-lab/my-company-project-domain
+- Blog Posts - Command side: https://github.com/ivans-innovation-lab/my-company-blog-domain
+
+- Project - Query side: https://github.com/ivans-innovation-lab/my-company-project-materialized-view
+
+- Blog Posts - Query side: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+
+
+The command-side and the query-side components do not have REST API's.
+This is why we need another component - web component for each of mentioned components to expose capabilities via REST API, and decompose application into microservices:
+
+- Project - ~~Command side web~~: https://github.com/ivans-innovation-lab/my-company-project-domain
+- Blog Posts - ~~Command side web~~: https://github.com/ivans-innovation-lab/my-company-blog-domain
+
+- Project - ~~Query side web~~: https://github.com/ivans-innovation-lab/my-company-project-materialized-view
+
+- Blog Posts - ~~Query side web~~: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+
+
+
+ 
+
+
