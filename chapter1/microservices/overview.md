@@ -115,6 +115,7 @@ querySideBlogComponent+querySideBlogControllerComponent=querySideBlogMicroServic
 - Spring Cloud
 - [Axon Framework](http://www.axonframework.org/) (v3.0-RC1)
 - My SQL / HSQLDB
+- RabbitMQ
 
 
 
