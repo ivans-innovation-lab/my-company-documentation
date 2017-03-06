@@ -31,10 +31,16 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 - Blog Posts - Query side: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
 
 
-
-
 The command-side and the query-side do not have REST API's.
 This is why we need another component - web component, which will expose capabilities of all other components via REST API, and package application in one _'.war'_ archive by including other components as depended libraries. 
 - Web application: https://github.com/ivans-innovation-lab/my-company-monolithic-web 
+
+### Technologies
+
+- [Spring Boot](http://projects.spring.io/spring-boot/) (v1.4.1.RELEASE)
+- [Spring Data](http://projects.spring.io/spring-data/)
+- [Spring Data REST](http://projects.spring.io/spring-data-rest/)
+- [Axon Framework](http://www.axonframework.org/) (v3.0-RC1)
+- My SQL / HSQLDB
 
 
