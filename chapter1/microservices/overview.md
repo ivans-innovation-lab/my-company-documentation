@@ -51,14 +51,17 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 
 
 The command-side and the query-side components do not have REST API's.
-This is why we need another component - web component for each of mentioned components to expose capabilities via REST API, and decompose application into microservices:
+This is why we need another component - web component (controller) for each of mentioned components to expose capabilities via REST API, and decompose application into microservices.
 
-- Project - ~~Command side web~~: https://github.com/ivans-innovation-lab/my-company-project-domain
-- Blog Posts - ~~Command side web~~: https://github.com/ivans-innovation-lab/my-company-blog-domain
 
-- Project - ~~Query side web~~: https://github.com/ivans-innovation-lab/my-company-project-materialized-view
 
-- Blog Posts - ~~Query side web~~: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+$$
+commandSideProjectComponent+commandSideProjectControllerComponent=commandSideProjectMicroService
+$$
+
+
+
+
 
 
 
