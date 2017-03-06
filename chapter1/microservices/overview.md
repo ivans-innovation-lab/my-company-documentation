@@ -40,6 +40,8 @@ The command-side and the query-side containers both have REST API's which can be
 
 ### Backend Microservices
 
+![](/assets/microservices.png)
+
 While the backing services in the middle layer are still considered to be microservices, they solve a set of concerns that are purely operational and security-related. The business logic of this application sits almost entirely in our bottom layer.
 
 #### BlogMicroservice
@@ -49,6 +51,12 @@ A Blog service is used for manging and quering the posts of your company. It is 
 #### ProjectMicroservice
 
 A Project service is used for manging and quering the projects of your company. It is split into a command-side microservice application and a query-side microservice application.
+
+#### Admin server
+
+Spring Boot Admin is a simple application to manage and monitor your Spring Boot services. The services are discovered using Spring Cloud (e.g. Eureka). The UI is just an Angular.js application on top of the Spring Boot Actuator endpoints. In case you want to use the more advanced features (e.g. jmx-, loglevel-management), Jolokia must be included in the client services.
+
+
 
 ### Backing services
 
