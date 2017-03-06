@@ -14,10 +14,10 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Components
 
-The domain is literally split into a command-side component and a query-side component (this is CQRS in its most literal form).
+The domain is literally split into a command-side component and a query-side component (this is [CQRS](http://microservices.io/patterns/data/cqrs.html) in its most literal form).
 Communication between the two components is event-driven and the demo uses simple event store (Database in this case - JPA - HSQLDB) as a means of passing the events between components.
 
-The command-side processes commands. Commands are actions which change state in some way. The execution of these commands results in Events being generated which are persisted by Axon (using SQL DB - HSQLDB) and propagated out to components. In event-sourcing, events are the sole records in the system. They are used by the system to describe and re-build aggregates on demand, one event at a time.
+The command-side processes commands. Commands are actions which change state in some way. The execution of these commands results in Events being generated which are persisted by Axon (using SQL DB - HSQLDB) and propagated out to components. In [event-sourcing](http://microservices.io/patterns/data/event-sourcing.html), events are the sole records in the system. They are used by the system to describe and re-build aggregates on demand, one event at a time.
 
 The query-side is an event-listener and processor. It listens for the Events and processes them in whatever way makes the most sense. In this application, the query-side just builds and maintains a materialized view which tracks the state of the individual aggregates (Product, Blog, ...).
 
