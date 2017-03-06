@@ -8,7 +8,7 @@ This are the patterns that will be used:
 - Command and Query Responsibility Separation (CQRS)
 - Event Sourcing
 
-I suggest you to read this two part article written by Chris Richardson: https://www.infoq.com/articles/microservices-aggregates-events-cqrs-part-1-richardson
+I suggest you to read this two part article written by [Chris Richardson](https://www.infoq.com/profile/Chris-Richardson): https://www.infoq.com/articles/microservices-aggregates-events-cqrs-part-1-richardson
 
 <iframe src="https://structurizr.com/embed/22311?diagram=Context&diagramSelector=false" width="600" height="425" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
