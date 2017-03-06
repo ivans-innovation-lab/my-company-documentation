@@ -62,7 +62,7 @@ Spring Boot Admin is a simple application to manage and monitor your Spring Boot
 
 The premise is that there are third-party service dependencies that should be treated as attached resources to your cloud native applications. The key trait of backing services are that they are provided as bindings to an application in its deployment environment by a cloud platform. Each of the backing services must be located using a statically defined route
 
-#### (Service) Registry
+#### (Eureka) Registry
 
 Netflix Eureka is a service registry. It provides a REST API for service instance registration management and for querying available instances. Netflix Ribbon is an IPC client that works with Eureka to load balance(client side) requests across the available service instances.
 
