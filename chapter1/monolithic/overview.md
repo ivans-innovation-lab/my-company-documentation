@@ -23,10 +23,14 @@ The query-side is an event-listener and processor. It listens for the Events and
 
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
 
-- https://github.com/ivans-innovation-lab/my-company-project-domain
-- https://github.com/ivans-innovation-lab/my-company-blog-domain
-- https://github.com/ivans-innovation-lab/my-company-project-materialized-view
-- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+- https://github.com/ivans-innovation-lab/my-company-project-domain (Project - Command side)
+- https://github.com/ivans-innovation-lab/my-company-blog-domain (Blog Posts - Command side)
+
+- https://github.com/ivans-innovation-lab/my-company-project-materialized-view (Project - Query side)
+
+- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view (Blog Posts - Query side)
+
+
 
 
 The command-side and the query-side do not have REST API's.
