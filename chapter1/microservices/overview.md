@@ -98,6 +98,11 @@ This is why we need another component - web component (controller) for each of m
 ```
 commandSideProjectComponent+commandSideProjectControllerComponent=commandSideProjectMicroService
 
+commandSideBlogComponent+commandSideBlogControllerComponent=commandSideBlogMicroService
+
+
+
+
 
 ```
 
