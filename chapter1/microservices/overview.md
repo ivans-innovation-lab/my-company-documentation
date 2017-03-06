@@ -38,6 +38,20 @@ The **query-side** is an event-listener and processor. It listens for the `Event
 
 The command-side and the query-side containers both have REST API's which can be used to access their capabilities.
 
+### Backend Microservices
+
+While the backing services in the middle layer are still considered to be microservices, they solve a set of concerns that are purely operational and security-related. The business logic of this application sits almost entirely in our bottom layer.
+
+#### BlogMicroservice
+
+A Blog service is used for manging and quering the posts of your company. It is split into a command-side microservice application and a query-side microservice application.
+
+#### ProjectMicroservice
+
+A Project service is used for manging and quering the projects of your company. It is split into a command-side microservice application and a query-side microservice application.
+
+
+
 ## Components
 
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library as it was in monolithic version of this application:
