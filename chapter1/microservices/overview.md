@@ -46,11 +46,11 @@ While the backing services in the middle layer are still considered to be micros
 
 #### BlogMicroservice
 
-A Blog service is used for manging and quering the posts of your company. It is split into a command-side microservice application and a query-side microservice application.
+A Blog service is used for manging and quering the posts of my company. It is split into a command-side microservice application and a query-side microservice application.
 
 #### ProjectMicroservice
 
-A Project service is used for manging and quering the projects of your company. It is split into a command-side microservice application and a query-side microservice application.
+A Project service is used for manging and quering the projects of my company. It is split into a command-side microservice application and a query-side microservice application.
 
 #### Admin server
 
