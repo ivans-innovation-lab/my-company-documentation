@@ -2,7 +2,7 @@
 
 ## Patterns and techniques
 
-This are the patterns that will be used:
+Patterns/techniques that are used:
 
 - Domain Driven Design
 - Command and Query Responsibility Separation (CQRS)
