@@ -100,8 +100,9 @@ commandSideProjectComponent+commandSideProjectControllerComponent=commandSidePro
 
 commandSideBlogComponent+commandSideBlogControllerComponent=commandSideBlogMicroService
 
+querySideProjectComponent+querySideProjectControllerComponent=querySideProjectMicroService
 
-
+querySideBlogComponent+querySideBlogControllerComponent=querySideBlogMicroService
 
 
 ```
