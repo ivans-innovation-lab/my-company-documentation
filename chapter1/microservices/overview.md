@@ -107,6 +107,16 @@ querySideBlogComponent+querySideBlogControllerComponent=querySideBlogMicroServic
 
 ```
 
+### Technologies
+
+- [Spring Boot](http://projects.spring.io/spring-boot/) (v1.4.1.RELEASE)
+- [Spring Data](http://projects.spring.io/spring-data/)
+- [Spring Data REST](http://projects.spring.io/spring-data-rest/)
+- Spring Cloud
+- [Axon Framework](http://www.axonframework.org/) (v3.0-RC1)
+- My SQL / HSQLDB
+
+
 
 
 
