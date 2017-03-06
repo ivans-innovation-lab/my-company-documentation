@@ -28,7 +28,7 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 
 - https://github.com/ivans-innovation-lab/my-company-project-materialized-view (Project - Query side)
 
-- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view (Blog Posts - Query side)
+- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view (Blog Posts - Query side) 
 
 
 
