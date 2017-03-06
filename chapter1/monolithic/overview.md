@@ -14,6 +14,23 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Components
 
-There are logical components corresponding to different functional areas of the application...
+The domain is literally split into a command-side component and a query-side component (this is CQRS in its most literal form).
+Communication between the two components is event-driven and the demo uses simple event store (Database in this case - JPA - HSQLDB) as a means of passing the events between components.
+
+The command-side processes commands. Commands are actions which change state in some way. The execution of these commands results in Events being generated which are persisted by Axon (using SQL DB - HSQLDB) and propagated out to components. In event-sourcing, events are the sole records in the system. They are used by the system to describe and re-build aggregates on demand, one event at a time.
+
+The query-side is an event-listener and processor. It listens for the Events and processes them in whatever way makes the most sense. In this application, the query-side just builds and maintains a materialized view which tracks the state of the individual aggregates (Product, Blog, ...).
+
+Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
+
+- https://github.com/ivans-innovation-lab/my-company-project-domain
+- https://github.com/ivans-innovation-lab/my-company-blog-domain
+- https://github.com/ivans-innovation-lab/my-company-project-materialized-view
+- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+
+
+The command-side and the query-side do not have REST API's.
+This is why we need another component - web component, which will expose capabilities of all other components and package application in one _'.war'_ archive by including other components as depended libraries. 
+- https://github.com/ivans-innovation-lab/my-company-monolithic-web
 
 
