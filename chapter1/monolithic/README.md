@@ -4,7 +4,7 @@ Once we understand the architecture pattern language and we know how to visualiz
 
 [Monolithic Architecture pattern](http://microservices.io/patterns/monolithic.html) and the [Microservice Architecture pattern](http://microservices.io/patterns/microservices.html) are alternative ways of architecting an application. You pick one or the other.
 
-## Benefits Of A Monolithic Architecture
+## Benefits
 
 * Simple to develop - the goal of current development tools and IDEs is to support the development of monolithic applications
 
@@ -12,7 +12,7 @@ Once we understand the architecture pattern language and we know how to visualiz
 
 * Simple to scale - you can scale the application by running multiple copies of the application behind a load balancer
 
-## Drawbacks Of A Monolithic Architecture
+## Drawbacks
 
 * The large monolithic code base intimidates developers, especially ones who are new to the team. The application can be difficult to understand and modify. As a result, development typically slows down. Also, because there are not hard module boundaries, modularity breaks down over time. Moreover, because it can be difficult to understand how to correctly implement a change the quality of the code declines over time. It’s a downwards spiral.
 * Continuous deployment is difficult - a large monolithic application is also an obstacle to frequent deployments. In order to update one component you have to redeploy the entire application. This will interrupt background tasks \(e.g. Quartz jobs in a Java application\), regardless of whether they are impacted by the change, and possibly cause problems. There is also the chance that components that haven’t been updated will fail to start correctly. As a result, the risk associated with redeployment increases, which discourages frequent updates. This is especially a problem for user interface developers, since they usually need to iterative rapidly and redeploy frequently.
