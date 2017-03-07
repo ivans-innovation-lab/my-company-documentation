@@ -11,7 +11,7 @@ After one year in production \(with monolithic pattern\)  it is very difficult t
 
 ## Benefits
 
-This solution has a number of benefits:
+This microservices architecture has a number of benefits:
 
 * Each microservice is relatively small
   * Easier for a developer to understand
@@ -29,7 +29,7 @@ This solution has a number of benefits:
 
 ## Drawbacks
 
-This solution has a number of drawbacks:
+The microservices architecture has a number of drawbacks:
 
 * Developers must deal with the additional complexity of creating a distributed system.
   * Developer tools/IDEs are oriented on building monolithic applications and don’t provide explicit support for developing distributed applications.
