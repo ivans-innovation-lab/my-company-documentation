@@ -94,7 +94,7 @@ The configuration service is a vital component of any microservices architecture
 
 Each of the containers (microservices) is constructed of two main components:
 - domain/materialized view component
-- web/REST component
+- web (REST) component
 
 ### Project
 
