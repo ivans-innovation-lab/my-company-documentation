@@ -92,32 +92,30 @@ The configuration service is a vital component of any microservices architecture
 
 ## Components
 
-Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library as it was in monolithic version of this application:
+Each of the containers (microservices) is constructed of two main components:
+- domain/materialized view component
+- web/REST component
 
-- Project - Command side: https://github.com/ivans-innovation-lab/my-company-project-domain
-- Blog Posts - Command side: https://github.com/ivans-innovation-lab/my-company-blog-domain
+### Project
 
-- Project - Query side: https://github.com/ivans-innovation-lab/my-company-project-materialized-view
+#### Command side
+[commandSideProjectComponent](https://github.com/ivans-innovation-lab/my-company-project-domain)+commandSideProjectWebComponent=[commandSideProjectMicroservice](https://github.com/ivans-innovation-lab/my-company-project-domain-microservice)
 
-- Blog Posts - Query side: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
+#### Query side
+[querySideProjectComponent](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)+querySideProjectWebComponent=[querySideProjectMicroService](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice)
 
+### Blog
 
-The command-side and the query-side components do not have REST API's.
-We have created a separate web component (controller) to expose REST API for each of the command/query side components. This enables us to decompose monolithic application into microservices.
+#### Command side
+[commandSideBlogComponent](https://github.com/ivans-innovation-lab/my-company-blog-domain)+commandSideBlogWebComponent=[commandSideBlogMicroservice](https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice)
 
-
-
-```
-commandSideProjectComponent+commandSideProjectWebComponent=commandSideProjectMicroService
-
-commandSideBlogComponent+commandSideBlogWebComponent=commandSideBlogMicroService
-
-querySideProjectComponent+querySideProjectWebComponent=querySideProjectMicroService
-
-querySideBlogComponent+querySideBlogWebComponent=querySideBlogMicroService
+#### Query side
+[querySideBlogComponent](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)+querySideBlogWebComponent=[querySideBlogMicroService](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
 
 
-```
+
+
+
 
 ### Technologies
 
