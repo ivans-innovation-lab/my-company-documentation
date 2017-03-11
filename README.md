@@ -24,10 +24,10 @@ The microservice architecture enables teams to be agile and autonomous. Together
 
 ## Source Code
 
-The source code of the application is hosted on the [Github](https://github.com/ivans-innovation-lab):
+The source code is hosted on the [Github](https://github.com/ivans-innovation-lab):
 
-* [infrastructure](https://github.com/ivans-innovation-lab/jenkins-pipelines-infrastructure)
-* [delivery pipelines](https://github.com/ivans-innovation-lab/jenkins-pipelines-jobs)
+* [infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
+* [delivery pipelines](https://github.com/ivans-innovation-lab/my-company-ci-jobs)
 * [documentation](https://github.com/ivans-innovation-lab/my-company-documentation)
 * business domain
 
@@ -35,7 +35,7 @@ The source code of the application is hosted on the [Github](https://github.com/
 
 You will find the value of an architecture pattern language - specifically you will gain knowledge about many different patterns, and you will better understand the relations between them. This will enable you to make better discussions \(monolithic or microservices\).
 
-You will learn how to visualise, document and explore  software architecture.
+You will learn how to visualize, document and explore  software architecture.
 
 You will get your hands dirty with the code - we will implement fully functional monolithic application first, and after that we will migrate to alternate microservices architecture. You will find the answers on
 
