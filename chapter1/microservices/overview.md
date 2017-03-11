@@ -102,7 +102,7 @@ Each of the containers (microservices) is constructed of two main components:
 [commandSideProjectComponent](https://github.com/ivans-innovation-lab/my-company-project-domain)+commandSideProjectWebComponent=[commandSideProjectMicroservice](https://github.com/ivans-innovation-lab/my-company-project-domain-microservice)
 
 #### Query side
-[querySideProjectComponent](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)+querySideProjectWebComponent=[querySideProjectMicroService](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice)
+[querySideProjectComponent](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)+querySideProjectWebComponent=[querySideProjectMicroservice](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice)
 
 ### Blog
 
@@ -110,7 +110,7 @@ Each of the containers (microservices) is constructed of two main components:
 [commandSideBlogComponent](https://github.com/ivans-innovation-lab/my-company-blog-domain)+commandSideBlogWebComponent=[commandSideBlogMicroservice](https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice)
 
 #### Query side
-[querySideBlogComponent](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)+querySideBlogWebComponent=[querySideBlogMicroService](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
+[querySideBlogComponent](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)+querySideBlogWebComponent=[querySideBlogMicroservice](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
 
 
 
