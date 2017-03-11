@@ -46,42 +46,49 @@ While the backing services in the middle layer are still considered to be micros
 
 #### Blog Microservice
 
-A Blog service is used for manging and quering the posts of my company. It is split into a command-side microservice application and a query-side microservice application.
+A Blog service is used for managing and querying the posts of my company. It is split into a command-side microservice application and a query-side microservice application.
 
-- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-web
-- https://github.com/ivans-innovation-lab/my-company-blog-domain-web
+- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice
+- https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice
 
 
 
 #### Project Microservice
 
-A Project service is used for manging and quering the projects of my company. It is split into a command-side microservice application and a query-side microservice application.
+A Project service is used for managing and querying the projects of my company. It is split into a command-side microservice application and a query-side microservice application.
 
-- https://github.com/ivans-innovation-lab/my-company-project-materialized-view-web
-- https://github.com/ivans-innovation-lab/my-company-project-domain-web
-
-#### Admin server
-
-Spring Boot Admin is a simple application to manage and monitor your Spring Boot services. The services are discovered using Spring Cloud (e.g. Eureka). The UI is just an Angular.js application on top of the Spring Boot Actuator endpoints. In case you want to use the more advanced features (e.g. jmx-, loglevel-management), Jolokia must be included in the client services.
-
+- https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice
+- https://github.com/ivans-innovation-lab/my-company-project-domain-microservice
 
 
 ### Backing services
 
 The premise is that there are third-party service dependencies that should be treated as attached resources to your cloud native applications. The key trait of backing services are that they are provided as bindings to an application in its deployment environment by a cloud platform. Each of the backing services must be located using a statically defined route
 
+#### Admin server
+
+Spring Boot Admin is a simple application to manage and monitor your Spring Boot services. The services are discovered using Spring Cloud (e.g. Eureka). The UI is just an Angular.js application on top of the Spring Boot Actuator endpoints. In case you want to use the more advanced features (e.g. jmx-, loglevel-management), Jolokia must be included in the client services.
+
+- https://github.com/ivans-innovation-lab/my-company-adminserver-backingservice
+
 #### Registry (Eureka)
 
 Netflix Eureka is a service registry. It provides a REST API for service instance registration management and for querying available instances. Netflix Ribbon is an IPC client that works with Eureka to load balance(client side) requests across the available service instances.
+
+- https://github.com/ivans-innovation-lab/my-company-registry-backingservice
 
 #### Authorization server (Oauth2)
 
 For issuing tokens and authorize requests.
 
+- https://github.com/ivans-innovation-lab/my-company-authserver-backingservice
+
 #### Configuration server
 
 The configuration service is a vital component of any microservices architecture. Based on the twelve-factor app methodology, configurations for your microservice applications should be stored in the environment and not in the project.
 
+- https://github.com/ivans-innovation-lab/my-company-configuration-backingservice
+- [Configuration repository](https://github.com/ivans-innovation-lab/my-company-configuration-repository)
 
 ## Components
 
