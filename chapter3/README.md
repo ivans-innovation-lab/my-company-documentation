@@ -33,5 +33,23 @@ Indeed the highest-performing companies don’t wait for bad things to happen in
 
 The common theme that can be observed in high performing organizations is that they are always trying to get better. Rather than waiting for the environment to shift around them or comparing themselves against others, [they treat themselves as the standard to beat](https://continuousdelivery.com/2013/01/on-antifragility-in-systems-and-organizational-architecture/).
 
+## Delivery Pipeline
 
+The key pattern introduced in continuous delivery is the _deployment pipeline._
+
+In the deployment pipeline pattern, every change in version control triggers a process \(usually in a [CI](https://continuousdelivery.com/foundations/continuous-integration/) server\) which creates deployable packages and runs automated unit tests and other validations such as static code analysis. This first step is optimized so that it takes only a few minutes to run. If this initial _commit stage _fails, the problem must be fixed immediately—nobody should check in more work on a broken commit stage. Every passing commit stage triggers the next step in the pipeline, which might consist of a more comprehensive set of automated tests. Versions of the software that pass all the automated tests can then be deployed on demand to further stages such as exploratory testing, performance testing, staging, and production, as shown below.
+
+![](/assets/pipeline-branching.png)
+
+Deployment pipelines tie together configuration management, continuous integration and test and deployment automation in a holistic, powerful way that works to improve software quality, increase stability, and reduce the time and cost required to make incremental changes to software, whatever domain you’re operating in. When building a deployment pipeline, we’ve found the following practices valuable:
+
+* **Only build packages once**
+  We want to be sure the thing we’re deploying is the same thing we’ve tested throughout the deployment pipeline, so if a deployment fails we can eliminate the packages as the source of the failure.
+* **Deploy the same way to every environment**—including development. This way, we test the deployment process many, many times before it gets to production, and again, we can eliminate it as the source of any problems.
+* **Smoke test your deployments**
+  Have a script that validates all your application’s dependencies are available, at the location you have configured your application. Make sure your application is running and available as part of the deployment process.
+* **Keep your environments similar**
+  Although they may differ in hardware configuration, they should have the same version of the operating system and middleware packages, and they should be configured in the same way. This has become much easier to achieve with modern virtualization and container technology.
+
+With the advent of infrastructure as code, it has became possible to use deployment pipelines to create a fully automated process for taking all kinds of changes—including database and infrastructure changes—from version control into production in a controlled, repeatable and auditable way.
 
