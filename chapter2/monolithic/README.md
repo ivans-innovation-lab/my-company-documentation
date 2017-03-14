@@ -1,4 +1,0 @@
-# Monolithic Organization
-
-
-

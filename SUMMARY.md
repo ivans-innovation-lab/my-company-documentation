@@ -16,8 +16,6 @@
   * [Microservice Architecture](/chapter1/microservices/README.md)
     * [Architecture Overview](/chapter1/microservices/overview.md)
 * [Chapter 2 - Organization](/chapter2/README.md)
-  * [Monolithic Organization](/chapter2/monolithic/README.md)
-  * [Microservice Organization](/chapter2/microservices/README.md)
 * [Chapter 3 - Process](/chapter3/README.md)
 * [References](references.md)
 
