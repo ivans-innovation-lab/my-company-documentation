@@ -17,7 +17,7 @@
     * [Architecture Overview](/chapter1/microservices/overview.md)
 * [Chapter 2 - Organization](/chapter2/README.md)
 * [Chapter 3 - Process](/chapter3/README.md)
-  * Monolithic Delivery Pattern
-  * Microservices Delivery Pattern
+  * [Monolithic Delivery Pattern](chapter3/monolithic-delivery-pattern.md)
+  * [Microservices Delivery Pattern](chapter3/microservices-delivery-pattern.md)
 * [References](references.md)
 
