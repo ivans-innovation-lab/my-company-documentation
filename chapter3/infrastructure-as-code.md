@@ -80,6 +80,10 @@ cf create-space pcfdev-prod
 cf set-space-role user pcfdev-org pcfdev-prod SpaceDeveloper
 ```
 
+Apps Manager URL: [https://local.pcfdev.io](https://local.pcfdev.io)
+
+![](/assets/Screen Shot 2017-03-28 at 5.46.08 PM.png)
+
 ### Adopt it
 
 Please note that this scenario can be adopted to your needs:
