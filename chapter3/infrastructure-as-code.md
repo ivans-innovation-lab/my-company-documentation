@@ -1,10 +1,11 @@
 # Infrastructure
 
-This chapter will lead you through installing an instance of Jenkins and Artifactory on a system. For this purposes we will use Docker to run Jenkins and Artifactory.
+This chapter will lead you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
 
 * Jenkins is the open source continuous integration server
 * Artifactory is the open source maven repository
 * Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
+* PCF Dev is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components.
 
 You can find the source code here: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
 
@@ -39,7 +40,7 @@ If it has not run yet, simply trigger it and see how the actual jobs/pipelines g
 
 Artifactory is available on [http://localhost:9091](http://localhost:9091/)
 
-### Running PCF
+### Running Pivotal Cloud Foundry
 
 You have to download and start PCF Dev. [A link how to do it is available here.](https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev)
 
@@ -83,7 +84,7 @@ Please note that this scenario can be adopted to your needs:
 * You like more Nexus then Artifactory
 * You don't want to create and manage multi-branch jobs by yourself \([my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs)\). You want to use [Github Organization Folder Plugin](https://github.com/jenkinsci/github-organization-folder-plugin)
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
-* You don't want to use PCF as platform as a service \(PaaS\). You want to use container as a service \(CaaS\).
+* You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\).
 
 
 
