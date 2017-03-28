@@ -36,7 +36,11 @@ $ ./start.sh gituser gitpassword
 
 Once Jenkins is started you should see at least the seed-job on [http://localhost:9090](http://localhost:9090/).
 
+![](/assets/Screen Shot 2017-03-28 at 11.52.40 AM.png)
+
 If it has not run yet, simply trigger it and see how the actual jobs/pipelines get created.
+
+![](/assets/Screen Shot 2017-03-28 at 11.55.33 AM.png)
 
 Artifactory is available on [http://localhost:9091](http://localhost:9091/)
 
