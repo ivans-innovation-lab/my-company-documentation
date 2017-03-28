@@ -44,6 +44,8 @@ If it has not run yet, simply trigger it and see how the actual jobs/pipelines g
 
 Artifactory is available on [http://localhost:9091](http://localhost:9091/)
 
+![](/assets/Screen Shot 2017-03-28 at 3.39.03 PM.png)
+
 ### Running Pivotal Cloud Foundry
 
 You have to download and start PCF Dev. [A link how to do it is available here.](https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry-dev/install-pcf-dev)
@@ -88,7 +90,7 @@ Please note that this scenario can be adopted to your needs:
 * You like more Nexus then Artifactory
 * You don't want to create and manage multi-branch jobs by yourself \([my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs)\). You want to use [Github Organization Folder Plugin](https://github.com/jenkinsci/github-organization-folder-plugin)
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
-* You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\).
+* You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\) layer.
 
 
 
