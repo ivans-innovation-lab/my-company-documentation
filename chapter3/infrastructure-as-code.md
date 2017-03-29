@@ -96,5 +96,9 @@ Please note that this scenario can be adopted to your needs:
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
 * You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\) layer.
 
+### Open issues
+
+There is an open issue: https://issues.jenkins-ci.org/browse/JENKINS-36195 . The USER inclusion/exclusion is not working. 
+
 
 
