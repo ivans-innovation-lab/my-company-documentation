@@ -11,7 +11,7 @@ Typically, this "Pipeline as Code" would be written to a[`Jenkinsfile`](https://
 * [my-company-blog-materialized-view](https://www.gitbook.com/book/ivans-innovation-lab/my-company/edit#)
 * [my-company-project-materialized-view](https://www.gitbook.com/book/ivans-innovation-lab/my-company/edit#)
 
-_https://github.com/ivans-innovation-lab/my-company-monolith/edit/master/Jenkinsfile_
+[https://github.com/ivans-innovation-lab/my-company-monolith/edit/master/Jenkinsfile](https://github.com/ivans-innovation-lab/my-company-monolith/edit/master/Jenkinsfile)
 
 ```
 pipeline {
@@ -49,8 +49,7 @@ pipeline {
         }
     }
 }
-
 ```
 
-
+TODO
 
