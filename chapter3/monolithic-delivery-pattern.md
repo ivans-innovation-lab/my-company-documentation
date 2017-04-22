@@ -6,8 +6,6 @@ Typically, this "Pipeline as Code" would be written to a[`Jenkinsfile`](https://
 
 * [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/Jenkinsfile)
 
-
-
 ```
 pipeline {
     agent any
@@ -53,7 +51,7 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 * _Deploy to Cloud Foundry - staging environment_
 * _Deploy to Cloud Foundry - production environment_
 
-'Build' stage will be triggered for 'feature/\*' branches only. Build & Deploy artifact will be triggered for 'master' branch only. We want to deploy artifact on maven repository \(Artifactory\) from 'master' branch only, and make sure that 'production ready' code is deployed.
+'Build' stage will be triggered for 'feature/\*' branches only. 'Build & Deploy artifact' stage will be triggered for 'master' branch only. We want to deploy artifact on maven repository \(Artifactory\) from 'master' branch only, and make sure that 'production ready' code is deployed.
 
 _TODO - deployment to Cloud Foundry_
 
