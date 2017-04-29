@@ -40,7 +40,9 @@ Once Jenkins is started you should see at least the seed-job on [http://localhos
 
 If it has not run yet, simply trigger it and see how the actual jobs/pipelines get created.
 
-![](/assets/Screen Shot 2017-03-28 at 11.55.33 AM.png)
+![](/assets/Screen Shot 2017-03-28 at 11.55.33 AM.png)a view from Jenkins Blue Ocean:
+
+![](/assets/Screen Shot 2017-04-29 at 12.27.00 PM.png)
 
 Artifactory is available on [http://localhost:9091](http://localhost:9091/)
 
@@ -98,7 +100,5 @@ Please note that this scenario can be adopted to your needs:
 
 ### Open issues
 
-There is an open issue: https://issues.jenkins-ci.org/browse/JENKINS-36195 . The USER inclusion/exclusion is not working. 
-
-
+There is an open issue: [https://issues.jenkins-ci.org/browse/JENKINS-36195](https://issues.jenkins-ci.org/browse/JENKINS-36195) . The USER inclusion/exclusion is not working.
 
