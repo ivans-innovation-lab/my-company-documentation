@@ -98,6 +98,10 @@ Each micro-service can use one database instance for that service only. This can
  - One database for all 'command side' microservices, and one database per 'query side' service (not so complicated - scales better)
  - One database per service (complicated - scales good)
  
+### Message broker
+
+ - [RabbitMQ](https://www.rabbitmq.com/) to pass events between micro-services. We'll deliver a event to multiple consumers. This pattern is known as "publish/subscribe". 'Command side' service will send events to exchange. Each 'query side' service will bind a queue to that exchange and receive (process) events in that way. Events are durable and this is making the system more (highly) available and fault isolated. The 'query  side' doesn't have to be online, as long as events are durable. Once the 'query side' is online it will process all events in concrete queue with correct order.
+ 
 
 ## Components
 

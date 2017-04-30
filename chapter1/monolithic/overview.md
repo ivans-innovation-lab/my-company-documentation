@@ -17,7 +17,7 @@ We are developing a server-side enterprise application. It will support a variet
 ## Containers
 
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
-- Database (in memory)
+- Database to store events, materialized views and to act as event-bus.
 
 ## Components
 
