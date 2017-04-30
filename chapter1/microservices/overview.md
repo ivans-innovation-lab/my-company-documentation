@@ -38,57 +38,66 @@ The **query-side** is an event-listener and processor. It listens for the `Event
 
 The command-side and the query-side containers both have REST API's which can be used to access their capabilities.
 
-### Backend Microservices
+### [Backend Microservices](https://github.com/search?q=topic%3Amicroservice+org%3Aivans-innovation-lab&type=Repositories)
 
 ![](/assets/microservices.png)
 
 While the backing services in the middle layer are still considered to be microservices, they solve a set of concerns that are purely operational and security-related. The business logic of this application sits almost entirely in our bottom layer.
 
-#### Blog Microservice
+#### [Blog Microservices](https://github.com/search?utf8=%E2%9C%93&q=topic%3Amicroservice+topic%3Ablog+org%3Aivans-innovation-lab&type=Repositories)
 
-A Blog service is used for managing and querying the posts of my company. It is split into a command-side microservice application and a query-side microservice application.
+Two Blog micro-services are used for managing (command) and querying the blog posts: 
 
-- https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice
-- https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice
-
-
-
-#### Project Microservice
-
-A Project service is used for managing and querying the projects of my company. It is split into a command-side microservice application and a query-side microservice application.
-
-- https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice
-- https://github.com/ivans-innovation-lab/my-company-project-domain-microservice
+- Command side: https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice
+- Query side: https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice
 
 
-### Backing services
+
+#### [Project Microservices](https://github.com/search?utf8=%E2%9C%93&q=topic%3Amicroservice+topic%3Aproject+org%3Aivans-innovation-lab&type=Repositories)
+
+Two Project micro-services are used for managing (command) and querying the projects:
+
+- Command side: https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice
+- Query side: https://github.com/ivans-innovation-lab/my-company-project-domain-microservice
+
+
+### [Backing services](https://github.com/search?q=topic%3Abacking-service+org%3Aivans-innovation-lab&type=Repositories)
 
 The premise is that there are third-party service dependencies that should be treated as attached resources to your cloud native applications. The key trait of backing services are that they are provided as bindings to an application in its deployment environment by a cloud platform. Each of the backing services must be located using a statically defined route
 
-#### Admin server
+#### [Admin server](https://github.com/ivans-innovation-lab/my-company-adminserver-backingservice)
 
 Spring Boot Admin is a simple application to manage and monitor your Spring Boot services. The services are discovered using Spring Cloud (e.g. Eureka). The UI is just an Angular.js application on top of the Spring Boot Actuator endpoints. In case you want to use the more advanced features (e.g. jmx-, loglevel-management), Jolokia must be included in the client services.
 
 - https://github.com/ivans-innovation-lab/my-company-adminserver-backingservice
 
-#### Registry (Eureka)
+#### [Registry (Eureka)](https://github.com/ivans-innovation-lab/my-company-registry-backingservice)
 
 Netflix Eureka is a service registry. It provides a REST API for service instance registration management and for querying available instances. Netflix Ribbon is an IPC client that works with Eureka to load balance(client side) requests across the available service instances.
 
 - https://github.com/ivans-innovation-lab/my-company-registry-backingservice
 
-#### Authorization server (Oauth2)
+#### [Authorization server (Oauth2)](https://github.com/ivans-innovation-lab/my-company-authserver-backingservice)
 
 For issuing tokens and authorize requests.
 
 - https://github.com/ivans-innovation-lab/my-company-authserver-backingservice
 
-#### Configuration server
+#### [Configuration server](https://github.com/ivans-innovation-lab/my-company-configuration-backingservice)
 
 The configuration service is a vital component of any microservices architecture. Based on the twelve-factor app methodology, configurations for your microservice applications should be stored in the environment and not in the project.
 
 - https://github.com/ivans-innovation-lab/my-company-configuration-backingservice
 - [Configuration repository](https://github.com/ivans-innovation-lab/my-company-configuration-repository)
+
+### Databases
+
+Each micro-service can use one database instance for that service only. This can be easily configured:
+
+ - One database instance for all services (simple - hard to scale)
+ - One database for all 'command side' microservices, and one database per 'query side' service (not so complicated - scales better)
+ - One database per service (complicated - scales good)
+ 
 
 ## Components
 

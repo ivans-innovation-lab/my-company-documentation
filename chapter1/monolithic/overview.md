@@ -16,8 +16,8 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Containers
 
-- Web Application (Tomcat)
-- Database (HSQLDB)
+- [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
+- Database (in memory)
 
 ## Components
 
@@ -31,6 +31,7 @@ The query-side is an event-listener and processor. It listens for the Events and
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
 
 - Project - Command side: https://github.com/ivans-innovation-lab/my-company-project-domain
+
 - Blog Posts - Command side: https://github.com/ivans-innovation-lab/my-company-blog-domain
 
 - Project - Query side: https://github.com/ivans-innovation-lab/my-company-project-materialized-view
