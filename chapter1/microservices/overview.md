@@ -65,6 +65,27 @@ Two Project micro-services are used for managing (command) and querying the proj
 
 The premise is that there are third-party service dependencies that should be treated as attached resources to your cloud native applications. The key trait of backing services are that they are provided as bindings to an application in its deployment environment by a cloud platform. Each of the backing services must be located using a statically defined route
 
+#### [API Gateway](https://github.com/ivans-innovation-lab/my-company-api-gateway-backingservice)
+
+Implementation of an API gateway that is the single entry point for all clients. The API gateway handles requests by simply proxying/routing them to the appropriate service.
+
+```
+zuul:
+  routes:
+    my-company-blog-domain-microservice:
+      path: /command/blog/**
+    my-company-blog-materialized-view-microservice:
+      path: /query/blog/**
+    my-company-project-domain-microservice:
+      path: /command/project/**
+    my-company-project-materialized-view-microservice:
+      path: /query/project/**
+```
+
+
+
+ - https://github.com/ivans-innovation-lab/my-company-api-gateway-backingservice
+
 #### [Admin server](https://github.com/ivans-innovation-lab/my-company-adminserver-backingservice)
 
 Spring Boot Admin is a simple application to manage and monitor your Spring Boot services. The services are discovered using Spring Cloud (e.g. Eureka). The UI is just an Angular.js application on top of the Spring Boot Actuator endpoints. In case you want to use the more advanced features (e.g. jmx-, loglevel-management), Jolokia must be included in the client services.
