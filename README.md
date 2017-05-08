@@ -20,28 +20,21 @@ The microservice architecture is merely a means to an end. The ultimate goal is 
 
 ![](/assets/successtriangle.png)
 
-The microservice architecture enables teams to be agile and autonomous. Together, the team of teams and the microservice architecture  enable continuous delivery/deployment.
-
-## Source Code
-
-The source code is hosted on the [Github](https://github.com/ivans-innovation-lab):
-
-* [infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
-* [delivery pipelines](https://github.com/ivans-innovation-lab/my-company-ci-jobs)
-* [documentation](https://github.com/ivans-innovation-lab/my-company-documentation)
-* business domain
+The microservice architecture enables teams to be agile and autonomous. Together, the team of teams and the microservice architecture enable continuous delivery/deployment.
 
 ## What you will learn
 
-You will find the value of an architecture pattern language - specifically you will gain knowledge about many different patterns, and you will better understand the relations between them. This will enable you to make better discussions \(monolithic or microservices\).
+You will find the value of an architecture pattern language - specifically you will gain knowledge about many different patterns, and you will better understand the relations between them. We will specially focus on monolithic and microservice pattern.
 
-You will learn how to visualize, document and explore  software architecture.
+You will learn how to visualize, document and explore software architecture.
 
-You will get your hands dirty with the code - we will implement fully functional monolithic application first, and after that we will migrate to alternate microservices architecture. You will find the answers on
+We will implement monolithic application first, and migrate to alternate microservices architecture latter. You will find the answers on
 
 * why we are migrating to microservices.
 * how we are going to migrate to microservices and how it will influence on our organization and process.
-* how can we design monolithic application to prepare better for easier migration to microservice in the future.
+* how can we design and structure our monolithic application to prepare better for easier migration to microservices in the future.
 
+## Source Code
 
+The source code is hosted on [Github](https://github.com/ivans-innovation-lab).
 
