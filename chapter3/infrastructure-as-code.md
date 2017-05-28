@@ -1,17 +1,22 @@
 # Infrastructure
 
-This chapter will lead you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
+This chapter will lead you through two scenarios:
+
+* On-premises / Private cloud \(Jenkins, Local Artifactory, PCF Dev\)
+* Cloud-based / Public cloud \(CircleCI, Public Artifactory/JFrog, PWS\)
+
+## The scenario '_On-premises'_
+
+This scenario will lead you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
 
 * Jenkins is the open source continuous integration server
 * Artifactory is the open source maven repository
 * Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
 * PCF Dev is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components.
 
-You can find the source code here: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
+Source code: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
 
 We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io/) to deploy applications on test, staging and production \(PWS\) environments.
-
-## The scenario:
 
 * all jobs are under version control and described via [Job-DSL](https://github.com/jenkinsci/job-dsl-plugin/wiki), see the [my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs) repo
 * there is a [seed-job](https://github.com/ivans-innovation-lab/my-company-infrastructure/blob/master/seedJob.xml) which runs periodically to ensure the aforementioned multi-branch jobs exist in Jenkins
@@ -101,4 +106,30 @@ Please note that this scenario can be adopted to your needs:
 ### Open issues
 
 There is an open issue: [https://issues.jenkins-ci.org/browse/JENKINS-36195](https://issues.jenkins-ci.org/browse/JENKINS-36195) . The USER inclusion/exclusion is not working.
+
+## The scenario '_Cloud-based'_
+
+This scenario will lead you through configuration of Artifactory, CircleCI and PWS. This tools are on the cloud, and you don't need to install and manage them.
+
+* [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
+  * [http://maven.idugalic.pro](http://maven.idugalic.pro)
+* [CircleCI](https://circleci.com/) as continuous integration and delivery** **platform
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-common](https://circleci.com/gh/ivans-innovation-lab/my-company-common)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-monolith](https://circleci.com/gh/ivans-innovation-lab/my-company-monolith)
+* [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _operated by _Pivotal _Software, Inc. \(“ _Pivotal _”\)
+
+Each project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
+
+* [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith) 
+* [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
+* [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
+* [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
+* [my-company-blog-materialized-view](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)
+* [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
+
+Artifacts are deployed on Artifactory instance. Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this cloud instance of Artifactory with maven profile 'idugalic-cloud'.
 
