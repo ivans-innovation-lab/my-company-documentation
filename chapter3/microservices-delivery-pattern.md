@@ -50,5 +50,7 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 * Deployment  - will run `mvn deploy`  to upload artifacts on maven repository \(only on master branch\)
 * Deployment  - will run `mvn docker:build` to build and push docker image to public docker hub \(only on master branch\)
 
+TODO adopt 'production' branch
+
 
 

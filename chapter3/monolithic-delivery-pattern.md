@@ -2,11 +2,7 @@
 
 There are many git branching strategies out there, such as [git flow](http://nvie.com/posts/a-successful-git-branching-model/) and [GitHub flow](http://scottchacon.com/2011/08/31/github-flow.html). I think there is still room for improvement. Git flow is complicated, and not so much in-line with continuous integration. GitHub flow does assume you are able to deploy to production every time you merge a feature branch. This is possible for SaaS applications but there are many cases where this is not possible. One would be a situation where you are not in control of the exact release moment. In these cases you can make a production branch that reflects the deployed code. You can deploy a new version by merging in master to the production branch. If you need to know what code is in production you can just checkout the production branch to see. The approximate time of deployment is easily visible as the merge commit in the version control system. This time is pretty accurate if you automatically deploy your production branch. If you need a more exact time you can have your deployment script create a tag on each deployment. This flow prevents the overhead of releasing, tagging and merging that is common to git flow.
 
-This feature-master-production strategy is known as** **[**Gitlab flow**](https://about.gitlab.com/2014/09/29/gitlab-flow)** **and** **we are going to apply it within this lab. Only in case you need to release software to the outside world you need to work with release branches.
-
-
-
-
+This feature-master-production strategy is known as** **[**Gitlab flow**](https://about.gitlab.com/2014/09/29/gitlab-flow)** **and** **we are going to apply it within this lab. Only in case you need to release software to the outside world you need to work with [release branches](https://docs.gitlab.com/ee/workflow/gitlab_flow.html#release-branches-with-gitlab-flow).
 
 ## The scenario '_On-premises'_
 
@@ -60,6 +56,8 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 
 'Build' stage will be triggered for 'feature/\*' branches only. 'Build & Deploy artifact' stage will be triggered for 'master' branch only. We want to deploy artifact on maven repository \(Artifactory\) from 'master' branch only, and make sure that 'production ready' code is deployed.
 
+TODO adopt 'production' branch
+
 ## The scenario '_Cloud-based'_
 
 Typically, this "Pipeline as Code" would be written to a [circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) and checked into a project’s source control repository:
@@ -96,6 +94,8 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 * Test - will run `mvn test` 
 * Deployment  - will run `mvn deploy`  to upload artifacts on maven repository \(only on master branch\)
 * Deployment  - will run `mvn docker:build` to build and push docker image to public docker hub \(only on master branch\)
+
+TODO adopt 'production' branch
 
 
 
