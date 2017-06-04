@@ -100,11 +100,7 @@ Please note that this scenario can be adopted to your needs:
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
 * You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\) layer.
 
-### Open issues
-
-There is an open issue: [https://issues.jenkins-ci.org/browse/JENKINS-36195](https://issues.jenkins-ci.org/browse/JENKINS-36195) . The USER inclusion/exclusion is not working.
-
-## The scenario '_Cloud-based'_
+### The scenario '_Cloud-based'_
 
 This scenario will guide you through configuration of Artifactory, CircleCI and PWS. This tools are on the cloud, and you don't need to install them or manage them.
 
@@ -137,6 +133,4 @@ Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Pare
 #### For private projects
 
 You can use CircleCI and Travis for private projects, but I would use [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). This Atlassian products are mature and very good integrated with Jira. I have to mention that [Gitlab](https://about.gitlab.com/) is coming strong as well. GitLab unifies issues, code review, CI and CD into a single UI.
-
-
 
