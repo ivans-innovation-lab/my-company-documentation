@@ -80,7 +80,6 @@ deployment:
     commands:
       - mvn deploy -s .circleci.settings.xml -DskipTests -P idugalic-cloud
       - mvn docker:build -s .circleci.settings.xml -DpushImage
-      
 ```
 
 Pipeline contains stages that will run sequentially \(and conditionally\):

@@ -7,7 +7,7 @@ This chapter will lead you through two scenarios:
 
 ## The scenario '_On-premises'_
 
-This scenario will lead you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
+This scenario will guide you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
 
 * **Jenkins** is the open source continuous integration server
 * **Artifactory** is the open source maven repository
@@ -22,7 +22,6 @@ We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io
 * there is a [seed-job](https://github.com/ivans-innovation-lab/my-company-infrastructure/blob/master/seedJob.xml) which runs periodically to ensure the aforementioned multi-branch jobs exist in Jenkins
 * each project to be built by these jobs defines its own pipeline via [Pipeline-DSL](https://jenkins.io/doc/book/pipeline/syntax/) in a`Jenkinsfile,(`Pipeline as Code`)` see the:
 
-  * [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith)
   * [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
   * [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
   * [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
@@ -30,8 +29,6 @@ We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io
   * [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
 
 * artifacts are deployed on Artifactory instance. Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use the Artifactory.
-
-* deployable artifacts are deployed on test, staging and production environments.
 
 ### Running Jenkins and Artifactory
 
@@ -109,7 +106,7 @@ There is an open issue: [https://issues.jenkins-ci.org/browse/JENKINS-36195](htt
 
 ## The scenario '_Cloud-based'_
 
-This scenario will lead you through configuration of Artifactory, CircleCI and PWS. This tools are on the cloud, and you don't need to install and manage them.
+This scenario will guide you through configuration of Artifactory, CircleCI and PWS. This tools are on the cloud, and you don't need to install them or manage them.
 
 * [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
   * [http://maven.idugalic.pro](http://maven.idugalic.pro)
@@ -119,25 +116,27 @@ This scenario will lead you through configuration of Artifactory, CircleCI and P
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-monolith](https://circleci.com/gh/ivans-innovation-lab/my-company-monolith)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain-microservice)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain-microservice)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view-microservice)
 * [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _ operated by  Pivotal  Software, Inc. \(“ Pivotal ”\)
 
 Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
 
-* [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith) 
 * [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
 * [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
 * [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
 * [my-company-blog-materialized-view](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)
 * [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
-* [my-company-blog-domain-microservice](https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice)
-* [my-company-project-domain-microservice](https://github.com/ivans-innovation-lab/my-company-project-domain-microservice)
-* [my-company-blog-materialized-view-microservice](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
-* [my-company-project-materialized-view-microservice](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice)
 
-Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this cloud instance of Artifactory with maven profile 'idugalic-cloud'.
+Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'.
+
+### Adopt it
+
+#### For public projects
+
+[CircleCI](https://circleci.com/) offer a total of four free linux containers \($2400 annual value\) for open-source projects. Simply keeping your project public will enable this for you! You can consider [Travis CI](https://travis-ci.org/), it is free for open source as well.
+
+#### For private projects
+
+You can use CircleCI and Travis for private projects, but I would use [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). This Atlassian products are mature and very good integrated with Jira. I have to mention that [Gitlab](https://about.gitlab.com/) is coming strong as well. GitLab unifies issues, code review, CI and CD into a single UI.
+
+
 
