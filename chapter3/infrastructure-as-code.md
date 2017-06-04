@@ -9,10 +9,10 @@ This chapter will lead you through two scenarios:
 
 This scenario will lead you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
 
-* Jenkins is the open source continuous integration server
-* Artifactory is the open source maven repository
-* Docker is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
-* PCF Dev is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components.
+* **Jenkins** is the open source continuous integration server
+* **Artifactory** is the open source maven repository
+* **Docker** is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
+* **PCF Dev** is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components.
 
 Source code: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
 
@@ -120,9 +120,13 @@ This scenario will lead you through configuration of Artifactory, CircleCI and P
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-monolith](https://circleci.com/gh/ivans-innovation-lab/my-company-monolith)
-* [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _operated by _Pivotal _Software, Inc. \(“ _Pivotal _”\)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain-microservice)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain-microservice)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
+  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view-microservice)
+* [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _ operated by  Pivotal  Software, Inc. \(“ Pivotal ”\)
 
-Each project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
+Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
 
 * [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith) 
 * [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
@@ -130,6 +134,10 @@ Each project/repository defines its own pipeline in a[ circle.yml](https://githu
 * [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
 * [my-company-blog-materialized-view](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)
 * [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
+* [my-company-blog-domain-microservice](https://github.com/ivans-innovation-lab/my-company-blog-domain-microservice)
+* [my-company-project-domain-microservice](https://github.com/ivans-innovation-lab/my-company-project-domain-microservice)
+* [my-company-blog-materialized-view-microservice](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view-microservice)
+* [my-company-project-materialized-view-microservice](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice)
 
-Artifacts are deployed on Artifactory instance. Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this cloud instance of Artifactory with maven profile 'idugalic-cloud'.
+Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this cloud instance of Artifactory with maven profile 'idugalic-cloud'.
 
