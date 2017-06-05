@@ -16,7 +16,7 @@ This scenario will guide you through installing an instance of Jenkins, Artifact
 
 Source code: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
 
-We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io/) to deploy applications on test, staging and production \(PWS\) environments.
+We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io/) to deploy applications on staging and production \(PWS\) environments.
 
 * all jobs are under version control and described via [Job-DSL](https://github.com/jenkinsci/job-dsl-plugin/wiki), see the [my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs) repo
 * there is a [seed-job](https://github.com/ivans-innovation-lab/my-company-infrastructure/blob/master/seedJob.xml) which runs periodically to ensure the aforementioned multi-branch jobs exist in Jenkins
@@ -76,8 +76,6 @@ You’ll have to create 3 separate spaces \(email admin, pass admin\)
 ```
 cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
 
-cf create-space pcfdev-test
-cf set-space-role user pcfdev-org pcfdev-test SpaceDeveloper
 cf create-space pcfdev-stage
 cf set-space-role user pcfdev-org pcfdev-stage SpaceDeveloper
 cf create-space pcfdev-prod

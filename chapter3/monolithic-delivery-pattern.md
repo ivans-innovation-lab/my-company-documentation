@@ -81,11 +81,15 @@ test:
     - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
 deployment:
-  master:
+  stage:
     branch: master
     commands:
       - mvn deploy -s .circleci.settings.xml -DskipTests -P idugalic-cloud
-      - mvn docker:build -s .circleci.settings.xml -DpushImage
+      - mvn cf:push -s .circleci.settings.xml -DskipTests -Dcf.appname=stage-my-company-monolith -Dcf.space=Stage -Dcf.services=sql
+  production:
+    branch: production
+    commands:
+      - mvn cf:push -s .circleci.settings.xml -DskipTests -Dcf.appname=prod-my-company-monolith -Dcf.space=Prod -Dcf.services=sql
 ```
 
 Pipeline contains stages that will run sequentially \(and conditionally\):
@@ -93,9 +97,8 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 * Dependencies - will download all maven dependencies and save them in the cache for latter
 * Test - will run `mvn test` 
 * Deployment  - will run `mvn deploy`  to upload artifacts on maven repository \(only on master branch\)
-* Deployment  - will run `mvn docker:build` to build and push docker image to public docker hub \(only on master branch\)
-
-TODO adopt 'production' branch
+* Deployment  - will run mvn cf:push to deploy application on PCF 'stage' environment \(only on master branch\)
+* Deployment  - will run mvn cf:push to deploy application on PCF 'production' environment \(only on production branch\)
 
 
 
