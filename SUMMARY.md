@@ -18,6 +18,7 @@
 * [Chapter 2 - Organization](/chapter2/README.md)
 * [Chapter 3 - Process](/chapter3/README.md)
   * [Infrastructure](chapter3/infrastructure-as-code.md)
+  * [Branching strategy](chapter3/branching-strategy.md)
   * [Monolithic Deployment Pipeline](chapter3/monolithic-delivery-pattern.md)
   * [Microservices Deployment Pipeline](chapter3/microservices-delivery-pattern.md)
 * [References](references.md)

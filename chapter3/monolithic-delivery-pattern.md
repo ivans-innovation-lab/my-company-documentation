@@ -1,9 +1,5 @@
 # Monolithic Deployment Pipeline
 
-There are many git branching strategies out there, such as [git flow](http://nvie.com/posts/a-successful-git-branching-model/) and [GitHub flow](http://scottchacon.com/2011/08/31/github-flow.html). I think there is still room for improvement. Git flow is complicated, and not so much in-line with continuous integration. GitHub flow does assume you are able to deploy to production every time you merge a feature branch. This is possible for SaaS applications but there are many cases where this is not possible. One would be a situation where you are not in control of the exact release moment. In these cases you can make a production branch that reflects the deployed code. You can deploy a new version by merging in master to the production branch. If you need to know what code is in production you can just checkout the production branch to see. The approximate time of deployment is easily visible as the merge commit in the version control system. This time is pretty accurate if you automatically deploy your production branch. If you need a more exact time you can have your deployment script create a tag on each deployment. This flow prevents the overhead of releasing, tagging and merging that is common to git flow.
-
-This feature-master-production strategy is known as** **[**Gitlab flow**](https://about.gitlab.com/2014/09/29/gitlab-flow)** **and** **we are going to apply it within this lab. Only in case you need to release software to the outside world you need to work with [release branches](https://docs.gitlab.com/ee/workflow/gitlab_flow.html#release-branches-with-gitlab-flow).
-
 ## The scenario '_On-premises'_
 
 Jenkins Pipeline is a suite of plugins which supports implementing and integrating continuous delivery pipelines into Jenkins. Pipeline provides an extensible set of tools for modeling simple-to-complex delivery pipelines "as code" via the [Pipeline DSL](https://jenkins.io/doc/book/pipeline/syntax/).\[[1](https://jenkins.io/doc/book/pipeline/#_footnote_1)\]
@@ -108,9 +104,6 @@ deployment:
       - cf push prod-my-company-monolith -p target/*.jar --no-start
       - cf bind-service prod-my-company-monolith mysql-prod
       - cf restart prod-my-company-monolith
-      
-      
-
 ```
 
 Pipeline contains stages that will run sequentially \(and conditionally\):
@@ -122,7 +115,7 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
   * Connect to PWS via CloudFoundry CLI: `cf api https://api.run.pivotal.io`
   * Authenticate to PWS: `cf auth idugalic@gmail.com $CF_PASSWORD`
   * Set Organization to 'idugalic' and space to 'Stage': `cf target -o idugalic -s Stage`
-  * Push the application. No start:` cf push stage-my-company-monolith -p target/*.jar --no-start`
+  * Push the application. No start:`cf push stage-my-company-monolith -p target/*.jar --no-start`
   * Bind mysql service to the application \(service have to be created first\):  `cf bind-service stage-my-company-monolith mysql-stage`
   * Start the application: `cf restart stage-my-company-monolith`
 * Deployment  - will run `mvn package`  to create artifact in the target folder \(only on _**production**_ branch\)
@@ -130,7 +123,7 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
   * Connect to PWS via CloudFoundry CLI: `cf api https://api.run.pivotal.io`
   * Authenticate to PWS: `cf auth idugalic@gmail.com $CF_PASSWORD`
   * Set Organization to 'idugalic' and space to 'Prod': `cf target -o idugalic -s Prod`
-  * Push the application. No start:` cf push prod-my-company-monolith -p target/*.jar --no-start`
+  * Push the application. No start:`cf push prod-my-company-monolith -p target/*.jar --no-start`
   * Bind mysql service to the application \(service have to be created first\):  `cf bind-service prod-my-company-monolith mysql-prod`
   * Start the application: `cf restart prod-my-company-monolith`
 
@@ -147,8 +140,4 @@ On each space you have to create instance of ClearDB MySQL service \(database\):
 * On Prod space: mysql-prod
 
 You can go further, and use [Blue-Green deployment](https://docs.pivotal.io/pivotalcf/1-7/devguide/deploy-apps/blue-green.html) to reduce downtime and risk.
-
-
-
-
 
