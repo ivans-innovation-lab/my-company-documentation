@@ -36,19 +36,11 @@ We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io
 $ ./start.sh gituser gitpassword
 ```
 
-Once Jenkins is started you should see at least the seed-job on [http://localhost:9090](http://localhost:9090/).
+Once **Jenkins** is started you should see at least the seed-job on [http://localhost:9090](http://localhost:9090/).![](/assets/Screen Shot 2017-03-28 at 11.52.40 AM.png)
 
-![](/assets/Screen Shot 2017-03-28 at 11.52.40 AM.png)
+If it has not run yet, simply trigger it and see how the actual jobs/pipelines get created \(Jenkins Blue Ocean\).![](/assets/Screen Shot 2017-06-14 at 10.47.14 PM.png)
 
-If it has not run yet, simply trigger it and see how the actual jobs/pipelines get created.
-
-![](/assets/Screen Shot 2017-03-28 at 11.55.33 AM.png)a view from Jenkins Blue Ocean:
-
-![](/assets/Screen Shot 2017-04-29 at 12.27.00 PM.png)
-
-Artifactory is available on [http://localhost:9091](http://localhost:9091/)
-
-![](/assets/Screen Shot 2017-03-28 at 3.39.03 PM.png)
+**Artifactory** is available on [http://localhost:9091](http://localhost:9091/)![](/assets/Screen Shot 2017-06-14 at 10.45.24 PM.png)
 
 ### Running Pivotal Cloud Foundry
 
