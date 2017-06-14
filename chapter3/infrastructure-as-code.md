@@ -63,7 +63,7 @@ You can start the PCF dev like this:
 cf dev start
 ```
 
-You’ll have to create 3 separate spaces \(email admin, pass admin\)
+You’ll have to create minimum 2 separate spaces \(email admin, pass admin\)
 
 ```
 cf login -a https://api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o pcfdev-org
