@@ -82,7 +82,7 @@ Once you are ready to deploy to **production** you should **merge master branch 
 
 ### Requirements
 
-For the pipeline to work you have to create two spaces\(environments\) on PCF:
+For the pipeline to work you have to create two spaces \(environments\) on PCF:
 
 * pcfdev-stage
 * pcfdev-prod
