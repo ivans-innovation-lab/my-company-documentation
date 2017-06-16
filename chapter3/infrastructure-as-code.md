@@ -2,21 +2,21 @@
 
 This chapter will lead you through two scenarios:
 
-* On-premises / Private cloud \(Jenkins, Local Artifactory, PCF Dev\)
-* Cloud-based / Public cloud \(CircleCI, Public Artifactory/JFrog, PWS\)
+* Private cloud \(Jenkins, Local Artifactory, PCF Dev\)
+* Public cloud \(CircleCI, Public Artifactory/JFrog, PWS\)
 
-## The scenario '_On-premises'_
+Source code: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
+
+## The scenario - Private cloud
 
 This scenario will guide you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
 
 * **Jenkins** is the open source continuous integration server
 * **Artifactory** is the open source maven repository
 * **Docker** is an open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.
-* **PCF Dev** is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components.
+* **PCF Dev** is a small footprint distribution of Pivotal Cloud Foundry \(PCF\) intended to be run locally on a developer machine. It delivers the essential elements of the Pivotal Cloud Foundry experience quickly through a condensed set of components. We will use [PCF Dev](https://pivotal.io/pcf-dev) to deploy applications on staging and production environments.
 
-Source code: [https://github.com/ivans-innovation-lab/my-company-infrastructure](https://github.com/ivans-innovation-lab/my-company-infrastructure)
-
-We will use [PCF Dev](https://pivotal.io/pcf-dev) / [PWS](https://run.pivotal.io/) to deploy applications on staging and production \(PWS\) environments.
+### Deployment Pipelines
 
 * all jobs are under version control and described via [Job-DSL](https://github.com/jenkinsci/job-dsl-plugin/wiki), see the [my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs) repo
 * there is a [seed-job](https://github.com/ivans-innovation-lab/my-company-infrastructure/blob/master/seedJob.xml) which runs periodically to ensure the aforementioned multi-branch jobs exist in Jenkins
@@ -90,9 +90,9 @@ Please note that this scenario can be adopted to your needs:
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
 * You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\) layer.
 
-### The scenario '_Cloud-based'_
+## The scenario - Public cloud
 
-This scenario will guide you through configuration of Artifactory, CircleCI and PWS. This tools are on the cloud, and you don't need to install them or manage them.
+This scenario will guide you through configuration of Artifactory, CircleCI and PWS. This tools are on the public cloud, and you don't need to install them or to manage them.
 
 * [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
   * [http://maven.idugalic.pro](http://maven.idugalic.pro)
@@ -102,7 +102,9 @@ This scenario will guide you through configuration of Artifactory, CircleCI and 
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain)
   * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain)
-* [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _ operated by  Pivotal  Software, Inc. \(“ Pivotal ”\)
+* [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _ operated by Pivotal Software, Inc.
+
+### Deployment Pipelines
 
 Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
 

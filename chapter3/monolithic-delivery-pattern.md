@@ -1,6 +1,6 @@
 # Monolithic Deployment Pipeline
 
-## The scenario '_On-premises'_
+## The scenario - Private cloud
 
 Jenkins Pipeline is a suite of plugins which supports implementing and integrating continuous delivery pipelines into Jenkins. Pipeline provides an extensible set of tools for modeling simple-to-complex delivery pipelines "as code" via the [Pipeline DSL](https://jenkins.io/doc/book/pipeline/syntax/).\[[1](https://jenkins.io/doc/book/pipeline/#_footnote_1)\]
 
@@ -54,7 +54,7 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 
 TODO adopt 'production' branch
 
-## The scenario '_Cloud-based'_
+## The scenario - Public cloud
 
 Typically, this "Pipeline as Code" would be written to a [circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) and checked into a project’s source control repository:
 
@@ -127,9 +127,13 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
   * Bind mysql service to the application \(service have to be created first\):  `cf bind-service prod-my-company-monolith mysql-prod`
   * Start the application: `cf restart prod-my-company-monolith`
 
-Every push to master branch will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-05 at 11.00.03 PM.png)
+Every push to **master** branch will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-05 at 11.00.03 PM.png)
 
-Once you are ready to deploy to production you should merge master branch into production branch \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-05 at 10.59.41 PM.png)For the pipeline to work you have to create two spaces\(environments\) on PWS:
+Once you are ready to deploy to **production** you should **merge master branch into production branc**h \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-05 at 10.59.41 PM.png)
+
+### Requirements
+
+For the pipeline to work you have to create two spaces\(environments\) on PWS:
 
 * Stage
 * Prod
@@ -139,5 +143,39 @@ On each space you have to create instance of ClearDB MySQL service \(database\):
 * On Stage space: mysql-stage
 * On Prod space: mysql-prod
 
-You can go further, and use [Blue-Green deployment](https://docs.pivotal.io/pivotalcf/1-7/devguide/deploy-apps/blue-green.html) to reduce downtime and risk.
+### Metrics
+
+PCF Metrics helps you understand and troubleshoot the health and performance of your apps by displaying the following:
+
+* [Container Metrics](http://docs.run.pivotal.io/metrics/using.html#container)
+   A graph of CPU, memory, and disk usage percentages
+* [Network Metrics](http://docs.run.pivotal.io/metrics/using.html#network)
+   A graph of requests, HTTP errors, and response times
+* [App Events](http://docs.run.pivotal.io/metrics/using.html#events)
+   A graph of update, start, stop, crash, SSH, and staging failure events
+* [Logs](http://docs.run.pivotal.io/metrics/using.html#logs)
+   A list of app logs that you can search, filter, and download
+* [Trace Explorer](http://docs.run.pivotal.io/metrics/using.html#trace)
+   A graph that traces a request as it flows through your apps and their endpoints, along with the corresponding logs
+
+![](/assets/Screen Shot 2017-06-16 at 11.45.31 AM.png)
+
+### Autoscaler
+
+[App Autoscaler](https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler.html) is a marketplace service that ensures app performance and helps control the cost of running apps.
+
+To balance app performance and cost, Space Developers and Space Managers can use App Autoscaler to do the following:
+
+* Configure rules that adjust instance counts based on metrics thresholds such as CPU Usage
+* Modify the maximum and minimum number of instances for an app, either manually or following a schedule
+
+### Blue-Green Deployment
+
+[Blue-green deployment](https://docs.run.pivotal.io/devguide/deploy-apps/blue-green.html) is a release technique that reduces downtime and risk by running two identical production environments called Blue and Green.
+
+At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.
+
+As you prepare a new release of your software, deployment and the final stage of testing takes place in the environment that is\_not\_live: in this example, Green. Once you have deployed and fully tested the software in Green, you switch the router so all incoming requests now go to Green instead of Blue. Green is now live, and Blue is idle.
+
+This technique can eliminate downtime due to application deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new release on Green, you can immediately roll back to the last version by switching back to Blue.
 
