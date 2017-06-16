@@ -18,8 +18,12 @@
 * [Chapter 2 - Organization](/chapter2/README.md)
 * [Chapter 3 - Process](/chapter3/README.md)
   * [Infrastructure](chapter3/infrastructure-as-code.md)
+    * [Public Cloud](chapter3/infrastructure-as-code/public-cloud.md)
+    * [Private Cloud](chapter3/infrastructure-as-code/private-cloud.md)
   * [Branching strategy](chapter3/branching-strategy.md)
   * [Monolithic Deployment Pipeline](chapter3/monolithic-delivery-pattern.md)
+    * [Public Cloud](chapter3/monolithic-delivery-pattern/public-cloud.md)
+    * [Private Cloud](chapter3/monolithic-delivery-pattern/private-cloud.md)
   * [Microservices Deployment Pipeline](chapter3/microservices-delivery-pattern.md)
 * [References](references.md)
 
