@@ -65,9 +65,7 @@ cf create-space pcfdev-prod
 cf set-space-role user pcfdev-org pcfdev-prod SpaceDeveloper
 ```
 
-Apps Manager URL: [https://local.pcfdev.io](https://local.pcfdev.io)
-
-![](/assets/Screen Shot 2017-03-28 at 5.46.08 PM.png)
+Apps Manager URL: [https://local.pcfdev.io](https://local.pcfdev.io)![](/assets/Screen Shot 2017-06-16 at 9.14.06 PM.png)
 
 ### Adopt it
 
