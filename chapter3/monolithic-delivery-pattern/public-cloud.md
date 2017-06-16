@@ -123,3 +123,5 @@ As you prepare a new release of your software, deployment and the final stage of
 
 This technique can eliminate downtime due to application deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new release on Green, you can immediately roll back to the last version by switching back to Blue.
 
+Blue-green deployment is not implemented in this lab. You should consider it.
+
