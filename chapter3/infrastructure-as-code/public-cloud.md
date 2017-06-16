@@ -1,6 +1,6 @@
 ## Public cloud
 
-This scenario will guide you through configuration of Artifactory, CircleCI and PWS. This tools are on the public cloud, and you don't need to install them or to manage them.
+Artifactory, CircleCI and PWS are on the public cloud, and you don't need to install them or to manage them.
 
 * [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
   * [http://maven.idugalic.pro](http://maven.idugalic.pro)

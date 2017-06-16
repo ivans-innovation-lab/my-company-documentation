@@ -1,6 +1,6 @@
 ## Private cloud
 
-This scenario will guide you through installing an instance of Jenkins, Artifactory and Pivotal Cloud Foundry on your system. For this purposes we will use Docker to run Jenkins and Artifactory.
+Jenkins, Artifactory and Pivotal Cloud Foundry are on our system. We will use Docker to run Jenkins and Artifactory.
 
 * **Jenkins** is the open source continuous integration server
 * **Artifactory** is the open source maven repository
