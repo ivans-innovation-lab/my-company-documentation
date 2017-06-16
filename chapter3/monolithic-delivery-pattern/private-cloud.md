@@ -76,7 +76,11 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
   * Bind mysql service to the application \(service have to be created first\):  `cf bind-service prod-my-company-monolith mysql-prod`
   * Start the application: `cf restart prod-my-company-monolith`
 
+#### Stage
+
 Every push to **master** branch will trigger the pipeline and the application will be deployed to PCF on '**pcfdev-stage**' space:![](/assets/Screen Shot 2017-06-16 at 8.52.20 PM.png)
+
+#### Production
 
 Once you are ready to deploy to **production** you should **merge master branch into production branch** \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PCF on '**pcfdev-prod**' space:![](/assets/Screen Shot 2017-06-16 at 9.02.42 PM.png)
 
