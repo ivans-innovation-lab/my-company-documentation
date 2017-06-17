@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage ('Build & Test') {
             steps {
-                sh 'mvn clean build'
+                sh 'mvn clean verify'
             }
             post {
                 success {
