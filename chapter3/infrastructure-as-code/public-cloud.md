@@ -20,9 +20,11 @@ Each maven project/repository defines its own pipeline in a[ circle.yml](https:/
 * [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
 * [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
 * [my-company-blog-materialized-view](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)
-* [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)![](/assets/Screen Shot 2017-06-17 at 11.13.45 AM.png)
+* [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
 
-Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'.
+![](/assets/Screen Shot 2017-06-17 at 11.13.45 AM.png)
+
+Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'.![](/assets/Screen Shot 2017-06-17 at 2.00.12 PM.png)
 
 ### Adopt it
 
