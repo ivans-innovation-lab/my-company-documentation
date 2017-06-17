@@ -25,5 +25,7 @@
     * [Public Cloud](chapter3/monolithic-delivery-pattern/public-cloud.md)
     * [Private Cloud](chapter3/monolithic-delivery-pattern/private-cloud.md)
   * [Microservices Deployment Pipeline](chapter3/microservices-delivery-pattern.md)
+    * Public Cloud
+    * Private Cloud
 * [References](references.md)
 
