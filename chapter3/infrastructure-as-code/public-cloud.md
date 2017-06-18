@@ -34,5 +34,5 @@ Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Pare
 
 #### For private projects
 
-You can use CircleCI and Travis for private projects, but I would use [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). This Atlassian products are mature and very good integrated with Jira. I have to mention that [Gitlab](https://about.gitlab.com/) is coming strong as well. GitLab unifies issues, code review, CI and CD into a single UI.
+You can use CircleCI and Travis for private projects, but I would use [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). This Atlassian products are mature and very good integrated with Jira. I have to mention that [Gitlab](https://about.gitlab.com/) is coming strong as well. GitLab unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
 
