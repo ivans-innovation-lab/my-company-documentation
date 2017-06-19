@@ -44,7 +44,7 @@ You can use:
 
 ##### Gitlab
 
-The Gitlab has proven as best option by my opinion \(the best value for the price\). 
+The Gitlab has proven as best option by my opinion \(the best value for the price\).
 
 * I have cloned Github organization to Gitlab group \(all repos included\)
 * I added CI pipeline \(.gitlab-ci.yml\) for every project/repo \(used shared runners and created my [specific runners](https://docs.gitlab.com/ee/ci/runners/README.html) as well\)
@@ -115,8 +115,7 @@ cf-deploy-prod:
     - cf restart prod-my-company-monolith
   only:
     - production
-
 ```
 
-
+![](/assets/Screen Shot 2017-06-19 at 4.11.16 PM.png)![](/assets/Screen Shot 2017-06-19 at 4.11.39 PM.png)
 
