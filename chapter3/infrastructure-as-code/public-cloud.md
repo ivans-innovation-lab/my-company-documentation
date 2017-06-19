@@ -30,11 +30,11 @@ Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artif
 
 ### Adopt it
 
-#### For public projects
+#### For open projects
 
 [CircleCI](https://circleci.com/) offer a total of four free linux containers \($2400 annual value\) for open-source projects. Simply keeping your project public will enable this for you! You can consider [Travis CI](https://travis-ci.org/), it is free for open source as well.
 
-#### For private projects
+#### For closed projects
 
 You can use:
 
@@ -44,7 +44,7 @@ You can use:
 
 ##### Gitlab
 
-The Gitlab has proven as best option by my opinion \(the best value for the price\).
+The Gitlab has proven as best option by my opinion _\(the best value for the price - for closed projects in the public cloud\)._
 
 * I have cloned Github organization to Gitlab group \(all repos included\)
 * I added CI pipeline \(.gitlab-ci.yml\) for every project/repo \(used shared runners and created my [specific runners](https://docs.gitlab.com/ee/ci/runners/README.html) as well\)
