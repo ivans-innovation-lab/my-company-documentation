@@ -119,8 +119,7 @@ cf-deploy-prod:
   when: manual
   only:
     - master
-
 ```
 
-![](/assets/Screen Shot 2017-06-19 at 4.11.16 PM.png)![](/assets/Screen Shot 2017-06-19 at 4.11.39 PM.png)
+![](/assets/Screen Shot 2017-06-19 at 11.18.50 PM.png)![](/assets/Screen Shot 2017-06-19 at 11.23.49 PM.png)
 
