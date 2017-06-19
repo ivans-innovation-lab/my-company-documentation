@@ -78,6 +78,7 @@ Please note that this scenario can be adopted to your needs:
 * You don't want to create and manage multi-branch jobs by yourself \([my-company-ci-jobs](https://github.com/ivans-innovation-lab/my-company-ci-jobs)\). You want to use [Github Organization Folder Plugin](https://github.com/jenkinsci/github-organization-folder-plugin)
 * You want to use Groove \(script\) style of Jenkinsfile rather then declarative style.
 * You don't want to use PCF as platform as a service \(PaaS\). You want to use a container as a service \(CaaS\) layer.
+* You want to install Gitlab and use GitlabCI on premise.
 
 
 
