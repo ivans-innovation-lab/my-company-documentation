@@ -26,7 +26,7 @@ Any project that has circle.yml configured will be build automatically by Circle
 
 ![](/assets/Screen Shot 2017-06-17 at 11.13.45 AM.png)
 
-Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'.![](/assets/Screen Shot 2017-06-17 at 2.00.12 PM.png)
+Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artifactory/webapp/#/home) in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'. Make sure that your parent maven pom file is configured by your needs. You have to change every [.circleci.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci.settings.xml) accordingly.![](/assets/Screen Shot 2017-06-17 at 2.00.12 PM.png)
 
 ### Adopt it
 
@@ -42,7 +42,81 @@ You can use:
 * [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). Atlassian products are mature and very good integrated. 
 * [Gitlab](https://about.gitlab.com/) unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
 
+##### Gitlab
+
 The Gitlab has proven as best option by my opinion \(the best value for the price\). 
+
+* I have cloned Github organization to Gitlab group \(all repos included\)
+* I added CI pipeline \(.gitlab-ci.yml\) for every project/repo \(used shared runners and created my [specific runners](https://docs.gitlab.com/ee/ci/runners/README.html) as well\)
+* Configured secret \(env\) variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) for every build in Gitlab CI settings
+* All green in 1 hour.
+
+![](/assets/Screen Shot 2017-06-19 at 11.58.12 AM.png)
+
+Example of my-company-monolith pipeline \(.gitlab-ci.yml\):
+
+```
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script:
+    - "mvn package -s .circleci.settings.xml -B"
+  artifacts:
+    paths:
+      - target/*.jar
+
+maven-deploy:
+  image: maven:3-jdk-8
+  stage: deploy
+  script: "mvn -s .circleci.settings.xml -DskipTests deploy -P idugalic-cloud"
+  only:
+    - master
+
+# Master branch will be deployed to PWS(CloudFoundry) on "Stage" env.
+# It is required to have
+#   - organzation 'idugalic' created on PWS
+#   - space 'Stage' created within 'idugalic' organization
+# NOTE: CF_PASSWORD is a secret variable. You have to set it on Gitlab (Settings->CI/CD Pipelines->Secret Variables->Add Variable)
+cf-deploy-stage:
+  image: governmentpaas/cf-cli:latest
+  stage: deploy
+  script:
+    - cf api https://api.run.pivotal.io
+    - cf auth idugalic@gmail.com $CF_PASSWORD
+    - cf target -o idugalic -s Stage
+    - cf push stage-my-company-monolith -p target/*.jar --no-start
+    - cf bind-service stage-my-company-monolith mysql-stage
+    - cf restart stage-my-company-monolith
+  only:
+    - master
+
+# Production branch will be deployed to PWS(CloudFoundry) on "Prod" env.
+# It is required to have
+#   - organzation 'idugalic' created on PWS
+#   - space 'Prod' created within 'idugalic' organization
+# NOTE: CF_PASSWORD is a secret variable. You have to set it on Gitlab (Settings->CI/CD Pipelines->Secret Variables->Add Variable)
+cf-deploy-prod:
+  image: governmentpaas/cf-cli:latest
+  stage: deploy
+  script:
+    - cf api https://api.run.pivotal.io
+    - cf auth idugalic@gmail.com $CF_PASSWORD
+    - cf target -o idugalic -s Prod
+    - cf push prod-my-company-monolith -p target/*.jar --no-start
+    - cf bind-service prod-my-company-monolith mysql-prod
+    - cf restart prod-my-company-monolith
+  only:
+    - production
+
+```
 
 
 
