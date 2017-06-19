@@ -38,7 +38,7 @@ Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artif
 
 You can use:
 
-* CircleCI and Travis for private projects
+* CircleCI and Travis for closed/private projects
 * [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). Atlassian products are mature and very good integrated. 
 * [Gitlab](https://about.gitlab.com/) unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
 
