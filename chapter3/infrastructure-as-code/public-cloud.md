@@ -53,7 +53,7 @@ The Gitlab has proven as best option by my opinion _\(the best value for the pri
 
 ![](/assets/Screen Shot 2017-06-19 at 11.58.12 AM.png)
 
-Example of my-company-monolith pipeline \(.gitlab-ci.yml\):
+Example of my-company-monolith pipeline \([.gitlab-ci.yml](https://gitlab.com/snippets/1665449)\):
 
 ```
 image: docker:latest
@@ -76,14 +76,14 @@ maven-build:
 maven-deploy:
   image: maven:3-jdk-8
   stage: deploy
-  script: "mvn -s .circleci.settings.xml -DskipTests deploy -P idugalic-cloud"
+  script: "mvn -s .gitlab-ci.settings.xml -DskipTests deploy -P idugalic-cloud"
   only:
     - master
 
-# Master branch will be deployed to PWS(CloudFoundry) on "Stage" env.
+# Master branch will be deployed to PWS(CloudFoundry) on "Stage" env. Deployment will be triggered on every push to master branch.
 # It is required to have
 #   - organzation 'idugalic' created on PWS
-#   - space 'Stage' created within 'idugalic' organization
+#   - space 'Stage' created within 'idugalic' organization on PWS
 # NOTE: CF_PASSWORD is a secret variable. You have to set it on Gitlab (Settings->CI/CD Pipelines->Secret Variables->Add Variable)
 cf-deploy-stage:
   image: governmentpaas/cf-cli:latest
@@ -95,14 +95,14 @@ cf-deploy-stage:
     - cf push stage-my-company-monolith -p target/*.jar --no-start
     - cf bind-service stage-my-company-monolith mysql-stage
     - cf restart stage-my-company-monolith
+  environment:
+    name: staging
+    url: https://stage-my-company-monolith.cfapps.io
   only:
     - master
 
-# Production branch will be deployed to PWS(CloudFoundry) on "Prod" env.
-# It is required to have
-#   - organzation 'idugalic' created on PWS
-#   - space 'Prod' created within 'idugalic' organization
-# NOTE: CF_PASSWORD is a secret variable. You have to set it on Gitlab (Settings->CI/CD Pipelines->Secret Variables->Add Variable)
+# The 'when': manual action exposes a play button in GitLab's UI and the cf-deploy-prod job will only be triggered if and when we click that play button.
+# https://docs.gitlab.com/ce/ci/environments.html#manually-deploying-to-environments
 cf-deploy-prod:
   image: governmentpaas/cf-cli:latest
   stage: deploy
@@ -113,8 +113,13 @@ cf-deploy-prod:
     - cf push prod-my-company-monolith -p target/*.jar --no-start
     - cf bind-service prod-my-company-monolith mysql-prod
     - cf restart prod-my-company-monolith
+  environment:
+    name: production
+    url: https://prod-my-company-monolith.cfapps.io
+  when: manual
   only:
-    - production
+    - master
+
 ```
 
 ![](/assets/Screen Shot 2017-06-19 at 4.11.16 PM.png)![](/assets/Screen Shot 2017-06-19 at 4.11.39 PM.png)
