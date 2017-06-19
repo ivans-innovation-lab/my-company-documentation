@@ -14,7 +14,9 @@ Artifactory, CircleCI and PWS are on the public cloud, and you don't need to ins
 
 ### Deployment Pipelines
 
-Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file:
+Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file. Pipeline is using maven, and maven settings file \([.circleci.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci.settings.xml)\) is included. Make sure that your environment variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) are configured in every 'build' project on CircleCI.![](/assets/Screen Shot 2017-06-19 at 11.23.43 AM.png)
+
+Any project that has circle.yml configured will be build automatically by CircleCi on every push to master branch:
 
 * [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
 * [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
@@ -34,5 +36,13 @@ Artifacts are deployed on Artifactory instance in the cloud \(AWS hosted\). Pare
 
 #### For private projects
 
-You can use CircleCI and Travis for private projects, but I would use [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). This Atlassian products are mature and very good integrated with Jira. I have to mention that [Gitlab](https://about.gitlab.com/) is coming strong as well. GitLab unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
+You can use:
+
+* CircleCI and Travis for private projects
+* [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). Atlassian products are mature and very good integrated. 
+* [Gitlab](https://about.gitlab.com/) unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
+
+The Gitlab has proven as best option by my opinion \(the best value for the price\). 
+
+
 
