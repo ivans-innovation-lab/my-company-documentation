@@ -73,11 +73,11 @@ Pipeline contains stages that will run sequentially \(and conditionally\):
 
 #### Stage
 
-Every push to **master** branch will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-05 at 11.00.03 PM.png)
+Every push to **master** branch will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.42 PM.png)
 
 #### Production
 
-Once you are ready to deploy to **production** you should **merge master branch into production branc**h \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-05 at 10.59.41 PM.png)
+Once you are ready to deploy to **production** you should **merge master branch into production branc**h \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)
 
 ### Requirements
 
@@ -116,6 +116,18 @@ To balance app performance and cost, Space Developers and Space Managers can use
 
 * Configure rules that adjust instance counts based on metrics thresholds such as CPU Usage
 * Modify the maximum and minimum number of instances for an app, either manually or following a schedule
+
+### Spring Boot Actuator
+
+Adding Actuator to your Spring Boot application deployed on Pivotal Cloud Foundry gets you the following production-ready features:
+
+* Health Check column & expanded information in Instances section
+* git commit id indicator, navigable to your git repo
+* Summary git info under Settings tab \(also navigable to repo\)
+* Runtime adjustment of logging levels, exposed via Actuator endpoints
+* Heap Dump\*
+* View Trace\*
+* View Threads, dump/download for further analysis\*
 
 ### Blue-Green Deployment
 
