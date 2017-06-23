@@ -60,22 +60,29 @@ image: docker:latest
 services:
   - docker:dind
 
+# Stages is used to define stages that can be used by jobs. The specification of stages allows for having flexible multi stage pipelines.
+# The ordering of elements in stages defines the ordering of jobs' execution:
+# -Jobs of the same stage are run in parallel.
+# -Jobs of the next stage are run after the jobs from the previous stage complete successfully.
 stages:
   - build
-  - deploy
+  - staging
+  - test-staging
+  - production
 
-maven-build:
+maven-build-test:
   image: maven:3-jdk-8
   stage: build
   script:
-    - "mvn package -s .circleci.settings.xml -B"
+    - "mvn package -s .gitlab-ci.settings.xml -B"
   artifacts:
     paths:
       - target/*.jar
+      - target/surefire-reports/*
 
 maven-deploy:
   image: maven:3-jdk-8
-  stage: deploy
+  stage: staging
   script: "mvn -s .gitlab-ci.settings.xml -DskipTests deploy -P idugalic-cloud"
   only:
     - master
@@ -85,9 +92,9 @@ maven-deploy:
 #   - organzation 'idugalic' created on PWS
 #   - space 'Stage' created within 'idugalic' organization on PWS
 # NOTE: CF_PASSWORD is a secret variable. You have to set it on Gitlab (Settings->CI/CD Pipelines->Secret Variables->Add Variable)
-cf-deploy-stage:
+cf-deploy-staging:
   image: governmentpaas/cf-cli:latest
-  stage: deploy
+  stage: staging
   script:
     - cf api https://api.run.pivotal.io
     - cf auth idugalic@gmail.com $CF_PASSWORD
@@ -100,12 +107,23 @@ cf-deploy-stage:
     url: https://stage-my-company-monolith.cfapps.io
   only:
     - master
+    
+# End-to-end testing on Staging env.
+cf-end-to-end-test-staging:
+  image: tutum/curl:latest
+  stage: test-staging
+  script:
+    -  curl -i https://stage-my-company-monolith.cfapps.io/health
+  only:
+    - master
+
 
 # The 'when': manual action exposes a play button in GitLab's UI and the cf-deploy-prod job will only be triggered if and when we click that play button.
+# The requirement is that all jobs (cf-end-to-end-test-stage, cf-load-test-stage, cf-deploy-stage, maven-deploy) from stage 'staging' are passing.
 # https://docs.gitlab.com/ce/ci/environments.html#manually-deploying-to-environments
 cf-deploy-prod:
   image: governmentpaas/cf-cli:latest
-  stage: deploy
+  stage: production
   script:
     - cf api https://api.run.pivotal.io
     - cf auth idugalic@gmail.com $CF_PASSWORD
@@ -119,7 +137,8 @@ cf-deploy-prod:
   when: manual
   only:
     - master
+
 ```
 
-![](/assets/Screen Shot 2017-06-19 at 11.18.50 PM.png)![](/assets/Screen Shot 2017-06-19 at 11.23.49 PM.png)
+![](/assets/Screen Shot 2017-06-24 at 1.21.46 AM.png)![](/assets/Screen Shot 2017-06-19 at 11.23.49 PM.png)
 
