@@ -1,32 +1,21 @@
 ## Public cloud
 
-Artifactory, CircleCI and PWS are on the public cloud, and you don't need to install them or to manage them.
+Artifactory, CircleCI 2 and PWS are on the public cloud, and you don't need to install them or to manage them.
 
 * [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
   * [http://maven.idugalic.pro](http://maven.idugalic.pro)
 * [CircleCI](https://circleci.com/) as continuous integration and delivery** **platform
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-common](https://circleci.com/gh/ivans-innovation-lab/my-company-common)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-materialized-view)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view](https://circleci.com/gh/ivans-innovation-lab/my-company-project-materialized-view)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-blog-domain)
-  * [https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain](https://circleci.com/gh/ivans-innovation-lab/my-company-project-domain)
 * [PWS](http://run.pivotal.io/) - an instance of the Cloud Foundry platform-as-a-_service _ operated by Pivotal Software, Inc.
 
 ### Deployment Pipelines
 
-Each maven project/repository defines its own pipeline in a[ circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) file. Pipeline is using maven, and maven settings file \([.circleci.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci.settings.xml)\) is included. Make sure that your environment variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) are configured in every 'build' project on CircleCI.![](/assets/Screen Shot 2017-06-19 at 11.23.43 AM.png)
+Each maven project/repository defines its own pipeline/workflow in a .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) file. Pipeline is using maven, and maven settings file \([.circleci/maven.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/maven.settings.xml)\) is included. Make sure that your environment variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) are configured in every 'build' project on CircleCI.![](/assets/Screen Shot 2017-06-19 at 11.23.43 AM.png)
 
-Any project that has circle.yml configured will be build automatically by CircleCi on every push to master branch:
+Any project that has .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) configured will be build automatically by CircleCi on every push to master branch:
 
-* [my-company-common](https://github.com/ivans-innovation-lab/my-company-common)
-* [my-company-blog-domain](https://github.com/ivans-innovation-lab/my-company-blog-domain)
-* [my-company-project-domain](https://github.com/ivans-innovation-lab/my-company-project-domain)
-* [my-company-blog-materialized-view](https://github.com/ivans-innovation-lab/my-company-blog-materialized-view)
-* [my-company-project-materialized-view](https://github.com/ivans-innovation-lab/my-company-project-materialized-view)
+![](/assets/Screen Shot 2017-07-16 at 10.22.34 PM.png)
 
-![](/assets/Screen Shot 2017-06-17 at 11.13.45 AM.png)
-
-Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artifactory/webapp/#/home) in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'. Make sure that your parent maven pom file is configured by your needs. You have to change every [.circleci.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci.settings.xml) accordingly.![](/assets/Screen Shot 2017-06-17 at 2.00.12 PM.png)
+Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artifactory/webapp/#/home) in the cloud \(AWS hosted\). Parent maven [pom](https://github.com/ivans-innovation-lab/my-company-common/blob/master/pom.xml) file is configured to use this instance with maven profile 'idugalic-cloud'. Make sure that your parent maven pom file is configured by your needs. ![](/assets/Screen Shot 2017-06-17 at 2.00.12 PM.png)
 
 ### Adopt it
 
@@ -107,7 +96,7 @@ cf-deploy-staging:
     url: https://stage-my-company-monolith.cfapps.io
   only:
     - master
-    
+
 # End-to-end testing on Staging env.
 cf-end-to-end-test-staging:
   image: tutum/curl:latest
@@ -137,7 +126,6 @@ cf-deploy-prod:
   when: manual
   only:
     - master
-
 ```
 
 ![](/assets/Screen Shot 2017-06-24 at 1.21.46 AM.png)![](/assets/Screen Shot 2017-06-19 at 11.23.49 PM.png)
