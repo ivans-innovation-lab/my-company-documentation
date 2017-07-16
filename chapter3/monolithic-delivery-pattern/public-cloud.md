@@ -160,7 +160,7 @@ The following example shows a [workflow](https://circleci.com/gh/ivans-innovatio
 
 #### Stage
 
-Every push to **master** branch will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.42 PM.png)
+Every push to **master** branch \(every time you merge a feature branch\) will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.42 PM.png)
 
 #### Production
 
@@ -168,7 +168,7 @@ Once you are ready to deploy to **production** you should manually approve deplo
 
 ### Requirements
 
-For the pipeline to work you have to create two spaces\(environments\) on PWS:
+For the pipeline to work you have to create two spaces \(environments\) on PWS:
 
 * Stage
 * Prod
@@ -177,6 +177,16 @@ On each space you have to create instance of ClearDB MySQL service \(database\):
 
 * On Stage space: mysql-stage
 * On Prod space: mysql-prod
+
+```
+cf api https://api.run.pivotal.io
+cf auth EMAIL PASSWORD
+cf target -o idugalic -s Stage
+cf create-service cleardb spark mysql-stage
+cf t -s Prod
+cf create-service cleardb spark mysql-prod
+
+```
 
 ### Metrics
 
