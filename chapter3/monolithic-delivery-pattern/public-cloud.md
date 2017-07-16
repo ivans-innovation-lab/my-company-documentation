@@ -1,75 +1,164 @@
 ## Public cloud
 
-This "Pipeline as Code" is written to a [circle.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml) and checked into a project’s source control repository:
+This "Pipeline as Code" is written to a [.circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) and checked into a project’s source control repository:
 
-* [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/circle.yml)
+* [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml)
 
 ```
-machine:
-  services:
-    - docker
+defaults: &defaults
+  working_directory: /home/circleci/my-company-monolith
+  docker:
+    - image: circleci/openjdk:8-jdk-browsers
+    
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
 
-dependencies:
-  pre:
-    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
-    - sudo dpkg -i cf-cli_amd64.deb
-    - cf -v
-  override:
-    - mvn dependency:resolve -s .circleci.settings.xml
+      - checkout
 
-test:
-  override:
-    - mvn test -s .circleci.settings.xml
-  post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+      - restore_cache:
+          key: my-company-monolith-{{ checksum "pom.xml" }}
 
-deployment:
-  stage:
-    branch: master
-    commands:
-      - mvn deploy -s .circleci.settings.xml -DskipTests -P idugalic-cloud
-#      - mvn docker:build -s .circleci.settings.xml -DpushImage
-#      - mvn cf:push -s .circleci.settings.xml -DskipTests -Dcf.appname=stage-my-company-monolith -Dcf.space=Stage -Dcf.services=sql
-      - cf api https://api.run.pivotal.io
-      - cf auth idugalic@gmail.com $CF_PASSWORD
-      - cf target -o idugalic -s Stage
-      - cf push stage-my-company-monolith -p target/*.jar --no-start
-      - cf bind-service stage-my-company-monolith mysql-stage
-      - cf restart stage-my-company-monolith
+      - run: 
+          name: Install maven artifact
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              mvn -s .circleci/maven.settings.xml install -P idugalic-cloud
+            fi
+            
+      - deploy:
+          name: Deploy maven artifact
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              mvn -s .circleci/maven.settings.xml deploy -P idugalic-cloud
+            fi
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: my-company-monolith-{{ checksum "pom.xml" }}
+      
+      - run:
+          name: Collecting test results
+          command: |
+            mkdir -p junit/
+            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} junit/ \;
+          when: always
+          
+      - store_test_results:
+          path: junit/
+          
+      - store_artifacts:
+          path: junit/
+          
+      - run:
+          name: Collecting artifacts
+          command: |
+            mkdir -p artifacts/
+            find . -type f -regex ".*/target/.*jar" -exec cp {} artifacts/ \;
+     
+      - store_artifacts:
+          path: artifacts/
+          
+      - persist_to_workspace:
+          root: artifacts/
+          paths:
+            - .
+
+  staging:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace/
+      - run:
+          name: Install CloudFoundry CLI
+          command: |
+            curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+            sudo dpkg -i cf-cli_amd64.deb
+            cf -v
+      - run:
+          name: Deploy to Staging - PWS CLoudFoundry
+          command: |
+            cf api https://api.run.pivotal.io
+            cf auth idugalic@gmail.com $CF_PASSWORD
+            cf target -o idugalic -s Stage
+            cf push stage-my-company-monolith -p workspace/*.jar --no-start
+            cf bind-service stage-my-company-monolith mysql-stage
+            cf restart stage-my-company-monolith
+  
+  # A very simple e2e test    
+  staging-e2e:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace/
+          
+      - run: 
+          name: End to end test on Staging
+          command: curl -i https://stage-my-company-monolith.cfapps.io/health
+      
+      
   production:
-    branch: production
-    commands:
-      - mvn package -s .circleci.settings.xml -DskipTests
-#      - mvn cf:push -s .circleci.settings.xml -DskipTests -Dcf.appname=prod-my-company-monolith -Dcf.space=Prod -Dcf.services=sql
-      - cf api https://api.run.pivotal.io
-      - cf auth idugalic@gmail.com $CF_PASSWORD
-      - cf target -o idugalic -s Prod
-      - cf push prod-my-company-monolith -p target/*.jar --no-start
-      - cf bind-service prod-my-company-monolith mysql-prod
-      - cf restart prod-my-company-monolith
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace/
+          
+      - run:
+          name: Install CloudFoundry CLI
+          command: |
+            curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+            sudo dpkg -i cf-cli_amd64.deb
+            cf -v
+          
+      - run:
+          name: Deploy to Production - PWS CLoudFoundry
+          command: |
+            cf api https://api.run.pivotal.io
+            cf auth idugalic@gmail.com $CF_PASSWORD
+            cf target -o idugalic -s Prod
+            cf push prod-my-company-monolith -p workspace/*.jar --no-start
+            cf bind-service prod-my-company-monolith mysql-prod
+            cf restart prod-my-company-monolith
+      
+  
+workflows:
+  version: 2
+  my-company-monolith-workflow:
+    jobs:
+      - build
+      - staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - staging-e2e:
+          requires:
+            - staging
+          filters:
+            branches:
+              only: master
+      - approve-production:
+          type: approval
+          requires:
+            - staging-e2e
+          filters:
+            branches:
+              only: master
+      - production:
+          requires:
+            - approve-production
+          filters:
+            branches:
+              only: master
 ```
 
-Pipeline contains stages that will run sequentially \(and conditionally\):
+The following example shows a workflow with five sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
 
-* Dependencies - will download all maven dependencies and save them in the cache for latter
-* Test - will run `mvn test` 
-* Deployment  - will run `mvn deploy`  to upload artifact on maven repository \(only on _**master**_ branch\)
-* Deployment  - will push the application on PWS 'Stage' environment \(only on _**master**_ branch\)
-  * Connect to PWS via CloudFoundry CLI: `cf api https://api.run.pivotal.io`
-  * Authenticate to PWS: `cf auth idugalic@gmail.com $CF_PASSWORD`
-  * Set Organization to 'idugalic' and space to 'Stage': `cf target -o idugalic -s Stage`
-  * Push the application. No start:`cf push stage-my-company-monolith -p target/*.jar --no-start`
-  * Bind mysql service to the application \(service have to be created first\):  `cf bind-service stage-my-company-monolith mysql-stage`
-  * Start the application: `cf restart stage-my-company-monolith`
-* Deployment  - will run `mvn package`  to create artifact in the target folder \(only on _**production**_ branch\)
-* Deployment  - will push the application on PWS 'Prod' environment \(only on _**production**_ branch\)
-  * Connect to PWS via CloudFoundry CLI: `cf api https://api.run.pivotal.io`
-  * Authenticate to PWS: `cf auth idugalic@gmail.com $CF_PASSWORD`
-  * Set Organization to 'idugalic' and space to 'Prod': `cf target -o idugalic -s Prod`
-  * Push the application. No start:`cf push prod-my-company-monolith -p target/*.jar --no-start`
-  * Bind mysql service to the application \(service have to be created first\):  `cf bind-service prod-my-company-monolith mysql-prod`
-  * Start the application: `cf restart prod-my-company-monolith`
+![](/assets/Screen Shot 2017-07-16 at 10.40.17 PM.png)
 
 #### Stage
 
@@ -77,7 +166,7 @@ Every push to **master** branch will trigger the pipeline and the application wi
 
 #### Production
 
-Once you are ready to deploy to **production** you should **merge master branch into production branc**h \(you should create pull request for that\). This will trigger the pipeline and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)
+Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)
 
 ### Requirements
 
