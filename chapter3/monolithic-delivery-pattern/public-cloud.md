@@ -2,14 +2,12 @@
 
 This "Pipeline as Code" is written to a [.circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) and checked into a project’s source control repository:
 
-* [my-company-monolith](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml)
-
 ```
 defaults: &defaults
   working_directory: /home/circleci/my-company-monolith
   docker:
     - image: circleci/openjdk:8-jdk-browsers
-    
+
 version: 2
 jobs:
   build:
@@ -27,7 +25,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" != "master" ]; then
               mvn -s .circleci/maven.settings.xml install -P idugalic-cloud
             fi
-            
+
       - deploy:
           name: Deploy maven artifact
           command: |
@@ -39,29 +37,29 @@ jobs:
           paths:
             - ~/.m2
           key: my-company-monolith-{{ checksum "pom.xml" }}
-      
+
       - run:
           name: Collecting test results
           command: |
             mkdir -p junit/
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} junit/ \;
           when: always
-          
+
       - store_test_results:
           path: junit/
-          
+
       - store_artifacts:
           path: junit/
-          
+
       - run:
           name: Collecting artifacts
           command: |
             mkdir -p artifacts/
             find . -type f -regex ".*/target/.*jar" -exec cp {} artifacts/ \;
-     
+
       - store_artifacts:
           path: artifacts/
-          
+
       - persist_to_workspace:
           root: artifacts/
           paths:
@@ -87,32 +85,32 @@ jobs:
             cf push stage-my-company-monolith -p workspace/*.jar --no-start
             cf bind-service stage-my-company-monolith mysql-stage
             cf restart stage-my-company-monolith
-  
+
   # A very simple e2e test    
   staging-e2e:
     <<: *defaults
     steps:
       - attach_workspace:
           at: workspace/
-          
+
       - run: 
           name: End to end test on Staging
           command: curl -i https://stage-my-company-monolith.cfapps.io/health
-      
-      
+
+
   production:
     <<: *defaults
     steps:
       - attach_workspace:
           at: workspace/
-          
+
       - run:
           name: Install CloudFoundry CLI
           command: |
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf -v
-          
+
       - run:
           name: Deploy to Production - PWS CLoudFoundry
           command: |
@@ -122,8 +120,8 @@ jobs:
             cf push prod-my-company-monolith -p workspace/*.jar --no-start
             cf bind-service prod-my-company-monolith mysql-prod
             cf restart prod-my-company-monolith
-      
-  
+
+
 workflows:
   version: 2
   my-company-monolith-workflow:
@@ -156,7 +154,7 @@ workflows:
               only: master
 ```
 
-The following example shows a workflow with five sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
+The following example shows a [workflow](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-monolith) with five sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
 
 ![](/assets/Screen Shot 2017-07-16 at 10.40.17 PM.png)
 
