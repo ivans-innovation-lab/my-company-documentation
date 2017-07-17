@@ -191,7 +191,7 @@ For the pipeline to work you have to create two spaces \(environments\) on PWS:
 * Stage
 * Prod
 
-Deploy backing services first:
+Deploy backing-services first:
 
 1. [my-company-configuration-backingservice](https://github.com/ivans-innovation-lab/my-company-configuration-repository)
 2. [my-company-registry-backingservice](https://github.com/ivans-innovation-lab/my-company-registry-backingservice)
