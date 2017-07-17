@@ -178,7 +178,7 @@ For the pipeline to work you have to create two spaces \(environments\) on PWS:
 * Stage
 * Prod
 
-On each space you have to create instance of ClearDB MySQL service \(database\), cloudamqp \(RabbitMQ\), my-company-configuration-backingservice, my-company-registry-backingservice:
+On each space you have to create instance of ClearDB MySQL service \(database\), cloudamqp \(RabbitMQ\), [my-company-configuration-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-configuration-backingservice), [my-company-registry-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-registry-backingservice):
 
 ```
 cf api https://api.run.pivotal.io
