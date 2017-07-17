@@ -1,5 +1,16 @@
 ## Public cloud
 
+Every service has a pipeline/workflow:
+
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-project-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-project-materialized-view-microservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-project-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-project-domain-microservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-blog-materialized-view-microservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-blog-materialized-view-microservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-blog-domain-microservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-blog-domain-microservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-api-gateway-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-api-gateway-backingservice/)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-adminserver-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-adminserver-backingservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-registry-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-registry-backingservice)
+* [https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-configuration-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-configuration-backingservice)
+
 This "Pipeline as Code" is written to a [.circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-project-materialized-view-microservice/blob/master/.circleci/config.yml) and checked into a project’s source control repository:
 
 ```
@@ -169,7 +180,7 @@ Every push to **master** branch \(every time you merge a feature branch\) will t
 
 #### Production
 
-Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space
+Once you are ready to deploy to **production** you should manually approve deployment to production in your CircleCI workflow. This will trigger next job \(production\), and the application will be deployed to PWS on '**Prod**' space
 
 ### Requirements
 
