@@ -1,6 +1,6 @@
 ## Public cloud
 
-Artifactory, CircleCI 2 and PWS are on the public cloud, and you don't need to install them or to manage them.
+Artifactory, CircleCI 2 and PWS are on the public cloud, and you don't need to install them.
 
 * [Artifactory](https://www.jfrog.com/artifactory/) as Maven repository on AWS
   * [http://maven.idugalic.pro](http://maven.idugalic.pro)
@@ -9,9 +9,9 @@ Artifactory, CircleCI 2 and PWS are on the public cloud, and you don't need to i
 
 ### Deployment Pipelines
 
-Each maven project/repository defines its own pipeline/workflow in a .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) file. Pipeline is using maven, and maven settings file \([.circleci/maven.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/maven.settings.xml)\) is included. Make sure that your environment variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) are configured in every 'build' project on CircleCI.![](/assets/Screen Shot 2017-06-19 at 11.23.43 AM.png)
+Each maven project/repository defines its own pipeline/workflow in a .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) file. Pipeline is using maven tool, and maven settings file \([.circleci/maven.settings.xml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/maven.settings.xml)\) is included. Make sure that your environment variables \(MAVEN\_PASSWORD, CF\_PASSWORD\) are configured in every 'build' project on CircleCI.![](/assets/Screen Shot 2017-06-19 at 11.23.43 AM.png)
 
-Any project that has .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) configured will be build automatically by CircleCi on every push to master branch:
+Any project that has .[circleci/config.yml](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml) configured will be build automatically by CircleCI:
 
 ![](/assets/Screen Shot 2017-07-16 at 10.22.34 PM.png)
 
@@ -23,11 +23,11 @@ Artifacts are deployed on [Artifactory instance](http://maven.idugalic.pro/artif
 
 [CircleCI](https://circleci.com/) offer a total of four free linux containers \($2400 annual value\) for open-source projects. Simply keeping your project public will enable this for you! You can consider [Travis CI](https://travis-ci.org/), it is free for open source as well.
 
-#### For closed projects
+#### For private projects
 
 You can use:
 
-* CircleCI and Travis for closed/private projects
+* CircleCI and Travis for private projects
 * [Bitbucket](https://bitbucket.org/product) and [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines). Atlassian products are mature and very good integrated. 
 * [Gitlab](https://about.gitlab.com/) unifies issues, code review, CI and CD into a single UI. GitLab provides efficient platform for software development and delivery, covering the entire lifecycle from idea to production.
 

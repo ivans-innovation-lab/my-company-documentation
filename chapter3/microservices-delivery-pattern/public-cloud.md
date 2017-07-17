@@ -209,7 +209,55 @@ cf create-service cleardb spark mysql-prod
 cf create-service cloudamqp lemur rabbit-prod
 ```
 
-### ![](/assets/Screen Shot 2017-07-16 at 10.04.32 PM.png)
+### ![](/assets/Screen Shot 2017-07-16 at 10.04.32 PM.png)Metrics
+
+PCF Metrics helps you understand and troubleshoot the health and performance of your apps by displaying the following:
+
+* [Container Metrics](http://docs.run.pivotal.io/metrics/using.html#container)
+   A graph of CPU, memory, and disk usage percentages
+* [Network Metrics](http://docs.run.pivotal.io/metrics/using.html#network)
+   A graph of requests, HTTP errors, and response times
+* [App Events](http://docs.run.pivotal.io/metrics/using.html#events)
+   A graph of update, start, stop, crash, SSH, and staging failure events
+* [Logs](http://docs.run.pivotal.io/metrics/using.html#logs)
+   A list of app logs that you can search, filter, and download
+* [Trace Explorer](http://docs.run.pivotal.io/metrics/using.html#trace)
+   A graph that traces a request as it flows through your apps and their endpoints, along with the corresponding logs
+
+![](/assets/Screen Shot 2017-07-17 at 11.36.58 AM.png)
+
+### Autoscaler
+
+[App Autoscaler](https://docs.run.pivotal.io/appsman-services/autoscaler/using-autoscaler.html) is a marketplace service that ensures app performance and helps control the cost of running apps.
+
+To balance app performance and cost, Space Developers and Space Managers can use App Autoscaler to do the following:
+
+* Configure rules that adjust instance counts based on metrics thresholds such as CPU Usage
+* Modify the maximum and minimum number of instances for an app, either manually or following a schedule
+
+### Spring Boot Actuator
+
+Adding Actuator to your Spring Boot application deployed on Pivotal Cloud Foundry gets you the following production-ready features:
+
+* Health Check column & expanded information in Instances section
+* git commit id indicator, navigable to your git repo
+* Summary git info under Settings tab \(also navigable to repo\)
+* Runtime adjustment of logging levels, exposed via Actuator endpoints
+* Heap Dump\*
+* View Trace\*
+* View Threads, dump/download for further analysis\*
+
+### Blue-Green Deployment
+
+[Blue-green deployment](https://docs.run.pivotal.io/devguide/deploy-apps/blue-green.html) is a release technique that reduces downtime and risk by running two identical production environments called Blue and Green.
+
+At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.
+
+As you prepare a new release of your software, deployment and the final stage of testing takes place in the environment that is\_not\_live: in this example, Green. Once you have deployed and fully tested the software in Green, you switch the router so all incoming requests now go to Green instead of Blue. Green is now live, and Blue is idle.
+
+This technique can eliminate downtime due to application deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new release on Green, you can immediately roll back to the last version by switching back to Blue.
+
+Blue-green deployment is not implemented in this lab. You should consider it.
 
 
 
