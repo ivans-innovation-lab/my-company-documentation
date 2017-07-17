@@ -175,9 +175,6 @@ For the pipeline to work you have to create two spaces \(environments\) on PWS:
 
 On each space you have to create instance of ClearDB MySQL service \(database\):
 
-* On Stage space: mysql-stage
-* On Prod space: mysql-prod
-
 ```
 cf api https://api.run.pivotal.io
 cf auth EMAIL PASSWORD
@@ -185,7 +182,6 @@ cf target -o idugalic -s Stage
 cf create-service cleardb spark mysql-stage
 cf t -s Prod
 cf create-service cleardb spark mysql-prod
-
 ```
 
 ### Metrics

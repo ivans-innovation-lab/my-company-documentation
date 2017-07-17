@@ -165,9 +165,40 @@ The following example shows a [workflow](https://circleci.com/gh/ivans-innovatio
 
 #### Stage
 
-Every push to **master** branch \(every time you merge a feature branch\) will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-07-16 at 9.53.39 PM.png)
+Every push to **master** branch \(every time you merge a feature branch\) will trigger the pipeline and the applications will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-07-16 at 9.53.39 PM.png)
 
 #### Production
 
-Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:
+Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space
+
+### Requirements
+
+For the pipeline to work you have to create two spaces \(environments\) on PWS:
+
+* Stage
+* Prod
+
+On each space you have to create instance of ClearDB MySQL service \(database\), cloudamqp \(RabbitMQ\), my-company-configuration-backingservice, my-company-registry-backingservice:
+
+```
+cf api https://api.run.pivotal.io
+cf auth EMAIL PASSWORD
+
+cf target -o idugalic -s Stage
+cf create-user-provided-service my-company-configuration-backingservice -p '{"uri":"https://stage-my-company-configuration-backingservice.cfapps.io"}'
+cf create-user-provided-service my-company-registry-backingservice -p '{"uri":"https://stage-my-company-registry-backingservice.cfapps.io"}'
+cf create-service cleardb spark mysql-stage
+cf create-service cloudamqp lemur rabbit-stage
+
+
+cf t -s Prod
+cf create-user-provided-service my-company-configuration-backingservice -p '{"uri":"https://prod-my-company-configuration-backingservice.cfapps.io"}'
+cf create-user-provided-service my-company-registry-backingservice -p '{"uri":"https://prod-my-company-registry-backingservice.cfapps.io"}'
+cf create-service cleardb spark mysql-prod
+cf create-service cloudamqp lemur rabbit-prod
+```
+
+### ![](/assets/Screen Shot 2017-07-16 at 10.04.32 PM.png)
+
+
 
