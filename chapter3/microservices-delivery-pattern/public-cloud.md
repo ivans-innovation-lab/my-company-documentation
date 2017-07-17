@@ -182,6 +182,8 @@ Every push to **master** branch \(every time you merge a feature branch\) will t
 
 Once you are ready to deploy to **production** you should manually approve deployment to production in your CircleCI workflow. This will trigger next job \(production\), and the application will be deployed to PWS on '**Prod**' space
 
+![](/assets/Screen Shot 2017-07-17 at 2.19.24 PM.png)
+
 ### Requirements
 
 For the pipeline to work you have to create two spaces \(environments\) on PWS:
@@ -195,8 +197,6 @@ Deploy backing services first:
 2. [my-company-registry-backingservice](https://github.com/ivans-innovation-lab/my-company-registry-backingservice)
 
 On each space you have to create instance of ClearDB MySQL service \(database\), cloudamqp \(RabbitMQ\), [my-company-configuration-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-configuration-backingservice), [my-company-registry-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-registry-backingservice):
-
-
 
 ```
 cf api https://api.run.pivotal.io
