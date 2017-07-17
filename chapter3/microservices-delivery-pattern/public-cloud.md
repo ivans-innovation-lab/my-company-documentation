@@ -189,7 +189,14 @@ For the pipeline to work you have to create two spaces \(environments\) on PWS:
 * Stage
 * Prod
 
+Deploy backing services first:
+
+1. [my-company-configuration-backingservice](https://github.com/ivans-innovation-lab/my-company-configuration-repository)
+2. [my-company-registry-backingservice](https://github.com/ivans-innovation-lab/my-company-registry-backingservice)
+
 On each space you have to create instance of ClearDB MySQL service \(database\), cloudamqp \(RabbitMQ\), [my-company-configuration-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-configuration-backingservice), [my-company-registry-backingservice](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-registry-backingservice):
+
+
 
 ```
 cf api https://api.run.pivotal.io
@@ -258,6 +265,4 @@ As you prepare a new release of your software, deployment and the final stage of
 This technique can eliminate downtime due to application deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new release on Green, you can immediately roll back to the last version by switching back to Blue.
 
 Blue-green deployment is not implemented in this lab. You should consider it.
-
-
 
