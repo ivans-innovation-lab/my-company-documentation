@@ -254,6 +254,8 @@ Adding Actuator to your Spring Boot application deployed on Pivotal Cloud Foundr
 * View Trace\*
 * View Threads, dump/download for further analysis\*
 
+![](/assets/Screen Shot 2017-07-17 at 2.25.20 PM.png)![](/assets/Screen Shot 2017-07-17 at 2.26.33 PM.png)![](/assets/Screen Shot 2017-07-17 at 2.28.36 PM.png)![](/assets/Screen Shot 2017-07-17 at 2.30.09 PM.png)
+
 ### Blue-Green Deployment
 
 [Blue-green deployment](https://docs.run.pivotal.io/devguide/deploy-apps/blue-green.html) is a release technique that reduces downtime and risk by running two identical production environments called Blue and Green.
