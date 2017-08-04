@@ -328,3 +328,7 @@ This technique can eliminate downtime due to application deployment. In addition
 
 Blue-green deployment is implemented by 'production' job in the [workflow](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml).
 
+Doing Blue-green deployment with database schema changing is not easy. We have to change the schema in such a way that Blue-green deployment is possible, usually by making DB changes backward compatible. For this we need schema versioning first \([Flyway](http://flywaydb.org/)\). I was inspired with the [blog post](https://spring.io/blog/2016/05/31/zero-downtime-deployment-with-a-database). There you can find more details.
+
+
+
