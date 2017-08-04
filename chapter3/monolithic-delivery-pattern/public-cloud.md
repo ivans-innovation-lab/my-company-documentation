@@ -7,7 +7,7 @@ defaults: &defaults
   working_directory: /home/circleci/my-company-monolith
   docker:
     - image: circleci/openjdk:8-jdk-browsers
-    
+
 version: 2
 jobs:
   # Build and test with maven
@@ -28,7 +28,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" != "master" ]; then
               mvn -s .circleci/maven.settings.xml install -P idugalic-cloud
             fi
-            
+
       - deploy:
           name: Deploy maven artifact
           command: |
@@ -40,29 +40,29 @@ jobs:
           paths:
             - ~/.m2
           key: my-company-monolith1-{{ checksum "pom.xml" }}
-      
+
       - run:
           name: Collecting test results
           command: |
             mkdir -p junit/
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} junit/ \;
           when: always
-          
+
       - store_test_results:
           path: junit/
-          
+
       - store_artifacts:
           path: junit/
-          
+
       - run:
           name: Collecting artifacts
           command: |
             mkdir -p artifacts/
             find . -type f -regex ".*/target/.*jar" -exec cp {} artifacts/ \;
-     
+
       - store_artifacts:
           path: artifacts/
-          
+
       - persist_to_workspace:
           root: artifacts/
           paths:
@@ -88,21 +88,21 @@ jobs:
             cf push stage-my-company-monolith -p workspace/*.jar --no-start
             cf bind-service stage-my-company-monolith mysql
             cf restart stage-my-company-monolith
-  
+
   # Deploying current production on staging environemnt for DB schema backward compatibility testing.
   staging-prod:
     <<: *defaults
     steps:
       - attach_workspace:
           at: workspace/
-          
+
       - run:
           name: Install CloudFoundry CLI
           command: |
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf -v
-      
+
       - run: 
           name: Install AWS CLI
           command: sudo apt-get update && sudo apt-get install -y awscli
@@ -110,7 +110,7 @@ jobs:
       - run:
           name: Download latest production artifact from AWS S3 (AWS Permissions on CircleCI required)
           command: aws s3 sync s3://my-company-production . --delete --region eu-central-1
-          
+
       - deploy:
           name: Deploy latest production application to Staging - PWS CLoudFoundry (CF_PASSWORD variable required)
           command: |
@@ -131,7 +131,7 @@ jobs:
               cf restart stage-my-company-monolith-prod
             fi 
 
-  
+
   # A very simple e2e test on staging environemnt
   staging-e2e:
     <<: *defaults
@@ -142,7 +142,7 @@ jobs:
             curl -I "https://stage-my-company-monolith.cfapps.io/health"
             curl -I "https://stage-my-company-monolith.cfapps.io/api/blogposts"
             curl -I "https://stage-my-company-monolith.cfapps.io/api/projects"
-      
+
   # A very simple e2e test of the currnet production application on staging environment.
   # DB schema backward compatibility testing. Testing if the latest DB schema is compatible with latest production application.
   staging-prod-e2e:
@@ -154,7 +154,7 @@ jobs:
             curl -I "https://stage-my-company-monolith-prod.cfapps.io/health"
             curl -I "https://stage-my-company-monolith-prod.cfapps.io/api/blogposts"
             curl -I "https://stage-my-company-monolith-prod.cfapps.io/api/projects"
-              
+
   # Deploying build artifact on production environment with Blue-Green deployment strategy and the rollback posibility.
   # Artifact is uploaded to AWS s3 as the latest production artifact as well. It is used within 'staging-prod' and 'staging-prod-e2e' jobs to test DB schema backward compatibility
   production:
@@ -162,25 +162,25 @@ jobs:
     steps:
       - attach_workspace:
           at: workspace/
-          
+
       - run:
           name: Install CloudFoundry CLI
           command: |
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf -v
-            
+
       - run: 
           name: Install AWS CLI
           command: sudo apt-get update && sudo apt-get install -y awscli
-          
+
       - deploy:
           name: Deploy to Production - PWS CLoudFoundry (CF_PASSWORD variable required)
           command: |
             cf api https://api.run.pivotal.io
             cf auth idugalic@gmail.com $CF_PASSWORD
             cf target -o idugalic -s Prod
-            
+
             cf push prod-my-company-monolith-B -p workspace/*.jar --no-start
             cf bind-service prod-my-company-monolith-B mysql
             cf restart prod-my-company-monolith-B
@@ -195,12 +195,12 @@ jobs:
             cf app prod-my-company-monolith && cf rename prod-my-company-monolith prod-my-company-monolith-old
             # Rename Green to Blue
             cf rename prod-my-company-monolith-B prod-my-company-monolith
-                           
+
       - deploy:
           name: Upload latest production artifact to AWS S3 (AWS Permissions on CircleCI required)
           command: aws s3 sync workspace/ s3://my-company-production --delete --region eu-central-1
-          
-  
+
+
 workflows:
   version: 2
   my-company-monolith-workflow:
@@ -248,7 +248,7 @@ workflows:
 
 The following example shows a [workflow](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-monolith) with seven sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
 
-![](/assets/Screen Shot 2017-07-16 at 10.40.17 PM.png)
+![](/assets/Screen Shot 2017-08-04 at 1.13.39 PM.png)
 
 #### Stage
 
@@ -256,7 +256,7 @@ Every push to **master** branch \(every time you merge a feature branch\) will t
 
 #### Production
 
-Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)Additionally we will upload an artifact to AWS S3 so we can test DB schema backward compatibility on Stage environment. 
+Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)Additionally we will upload an artifact to AWS S3 so we can test DB schema backward compatibility on Stage environment.
 
 ### Requirements
 
