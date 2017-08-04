@@ -7,17 +7,20 @@ defaults: &defaults
   working_directory: /home/circleci/my-company-monolith
   docker:
     - image: circleci/openjdk:8-jdk-browsers
-
+    
 version: 2
 jobs:
+  # Build and test with maven
   build:
     <<: *defaults
     steps:
 
       - checkout
-
+      # Caching is one of the most effective ways to make jobs faster on CircleCI.
+      # Downloading from a Remote Repository in Maven is triggered by a project declaring a dependency that is not present in the local repository (or for a SNAPSHOT, when the remote repository contains one that is newer).
+      # Do not overwrite your release (not snapshots) artifacts (my-company-blog-domain, my-company-blog-materialized-view, my-company-project-domain, my-company-project-materialized-view) on remote maven repository, othervise the cache will become stale.
       - restore_cache:
-          key: my-company-monolith-{{ checksum "pom.xml" }}
+          key: my-company-monolith1-{{ checksum "pom.xml" }}
 
       - run: 
           name: Install maven artifact
@@ -25,7 +28,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" != "master" ]; then
               mvn -s .circleci/maven.settings.xml install -P idugalic-cloud
             fi
-
+            
       - deploy:
           name: Deploy maven artifact
           command: |
@@ -36,35 +39,35 @@ jobs:
       - save_cache:
           paths:
             - ~/.m2
-          key: my-company-monolith-{{ checksum "pom.xml" }}
-
+          key: my-company-monolith1-{{ checksum "pom.xml" }}
+      
       - run:
           name: Collecting test results
           command: |
             mkdir -p junit/
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} junit/ \;
           when: always
-
+          
       - store_test_results:
           path: junit/
-
+          
       - store_artifacts:
           path: junit/
-
+          
       - run:
           name: Collecting artifacts
           command: |
             mkdir -p artifacts/
             find . -type f -regex ".*/target/.*jar" -exec cp {} artifacts/ \;
-
+     
       - store_artifacts:
           path: artifacts/
-
+          
       - persist_to_workspace:
           root: artifacts/
           paths:
             - .
-
+  # Deploying build artifact on staging environment for testing.
   staging:
     <<: *defaults
     steps:
@@ -76,52 +79,128 @@ jobs:
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf -v
-      - run:
-          name: Deploy to Staging - PWS CLoudFoundry
+      - deploy:
+          name: Deploy to Staging - PWS CLoudFoundry (CF_PASSWORD variable required)
           command: |
             cf api https://api.run.pivotal.io
             cf auth idugalic@gmail.com $CF_PASSWORD
             cf target -o idugalic -s Stage
             cf push stage-my-company-monolith -p workspace/*.jar --no-start
-            cf bind-service stage-my-company-monolith mysql-stage
+            cf bind-service stage-my-company-monolith mysql
             cf restart stage-my-company-monolith
-
-  # A very simple e2e test    
-  staging-e2e:
+  
+  # Deploying current production on staging environemnt for DB schema backward compatibility testing.
+  staging-prod:
     <<: *defaults
     steps:
       - attach_workspace:
           at: workspace/
-
-      - run: 
-          name: End to end test on Staging
-          command: curl -i https://stage-my-company-monolith.cfapps.io/health
-
-
-  production:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: workspace/
-
+          
       - run:
           name: Install CloudFoundry CLI
           command: |
             curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
             sudo dpkg -i cf-cli_amd64.deb
             cf -v
+      
+      - run: 
+          name: Install AWS CLI
+          command: sudo apt-get update && sudo apt-get install -y awscli
 
       - run:
-          name: Deploy to Production - PWS CLoudFoundry
+          name: Download latest production artifact from AWS S3 (AWS Permissions on CircleCI required)
+          command: aws s3 sync s3://my-company-production . --delete --region eu-central-1
+          
+      - deploy:
+          name: Deploy latest production application to Staging - PWS CLoudFoundry (CF_PASSWORD variable required)
+          command: |
+            if [ -e "./my-company-monolith-1.0.0-SNAPSHOT.jar" ]; then
+              cf api https://api.run.pivotal.io
+              cf auth idugalic@gmail.com $CF_PASSWORD
+              cf target -o idugalic -s Stage
+              cf push stage-my-company-monolith-prod -p ./*.jar --no-start
+              cf bind-service stage-my-company-monolith-prod mysql
+              cf restart stage-my-company-monolith-prod 
+            else 
+              echo "Artifact does not exist, deploying current build"
+              cf api https://api.run.pivotal.io
+              cf auth idugalic@gmail.com $CF_PASSWORD
+              cf target -o idugalic -s Stage
+              cf push stage-my-company-monolith-prod -p workspace/*.jar --no-start
+              cf bind-service stage-my-company-monolith-prod mysql
+              cf restart stage-my-company-monolith-prod
+            fi 
+
+  
+  # A very simple e2e test on staging environemnt
+  staging-e2e:
+    <<: *defaults
+    steps:
+      - run: 
+          name: End to end test on Staging
+          command: |
+            curl -I "https://stage-my-company-monolith.cfapps.io/health"
+            curl -I "https://stage-my-company-monolith.cfapps.io/api/blogposts"
+            curl -I "https://stage-my-company-monolith.cfapps.io/api/projects"
+      
+  # A very simple e2e test of the currnet production application on staging environment.
+  # DB schema backward compatibility testing. Testing if the latest DB schema is compatible with latest production application.
+  staging-prod-e2e:
+    <<: *defaults
+    steps: 
+      - run: 
+          name: End to end test on Staging of current production
+          command: |
+            curl -I "https://stage-my-company-monolith-prod.cfapps.io/health"
+            curl -I "https://stage-my-company-monolith-prod.cfapps.io/api/blogposts"
+            curl -I "https://stage-my-company-monolith-prod.cfapps.io/api/projects"
+              
+  # Deploying build artifact on production environment with Blue-Green deployment strategy and the rollback posibility.
+  # Artifact is uploaded to AWS s3 as the latest production artifact as well. It is used within 'staging-prod' and 'staging-prod-e2e' jobs to test DB schema backward compatibility
+  production:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace/
+          
+      - run:
+          name: Install CloudFoundry CLI
+          command: |
+            curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+            sudo dpkg -i cf-cli_amd64.deb
+            cf -v
+            
+      - run: 
+          name: Install AWS CLI
+          command: sudo apt-get update && sudo apt-get install -y awscli
+          
+      - deploy:
+          name: Deploy to Production - PWS CLoudFoundry (CF_PASSWORD variable required)
           command: |
             cf api https://api.run.pivotal.io
             cf auth idugalic@gmail.com $CF_PASSWORD
             cf target -o idugalic -s Prod
-            cf push prod-my-company-monolith -p workspace/*.jar --no-start
-            cf bind-service prod-my-company-monolith mysql-prod
-            cf restart prod-my-company-monolith
-
-
+            
+            cf push prod-my-company-monolith-B -p workspace/*.jar --no-start
+            cf bind-service prod-my-company-monolith-B mysql
+            cf restart prod-my-company-monolith-B
+            # Map Original Route to Green
+            cf map-route prod-my-company-monolith-B cfapps.io -n prod-my-company-monolith
+            # Unmap temp Route to Green
+            cf unmap-route prod-my-company-monolith-B cfapps.io -n prod-my-company-monolith-B
+            # Unmap Route to Blue (only if Blue exist)
+            cf app prod-my-company-monolith && cf unmap-route prod-my-company-monolith cfapps.io -n prod-my-company-monolith
+            # Stop and rename current Blue in case you need to roll back your changes (only if Blue exist)
+            cf app prod-my-company-monolith && cf stop prod-my-company-monolith
+            cf app prod-my-company-monolith && cf rename prod-my-company-monolith prod-my-company-monolith-old
+            # Rename Green to Blue
+            cf rename prod-my-company-monolith-B prod-my-company-monolith
+                           
+      - deploy:
+          name: Upload latest production artifact to AWS S3 (AWS Permissions on CircleCI required)
+          command: aws s3 sync workspace/ s3://my-company-production --delete --region eu-central-1
+          
+  
 workflows:
   version: 2
   my-company-monolith-workflow:
@@ -133,9 +212,21 @@ workflows:
           filters:
             branches:
               only: master
+      - staging-prod:
+          requires:
+            - staging
+          filters:
+            branches:
+              only: master
       - staging-e2e:
           requires:
             - staging
+          filters:
+            branches:
+              only: master
+      - staging-prod-e2e:
+          requires:
+            - staging-prod
           filters:
             branches:
               only: master
@@ -143,6 +234,7 @@ workflows:
           type: approval
           requires:
             - staging-e2e
+            - staging-prod-e2e
           filters:
             branches:
               only: master
@@ -154,17 +246,17 @@ workflows:
               only: master
 ```
 
-The following example shows a [workflow](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-monolith) with five sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
+The following example shows a [workflow](https://circleci.com/gh/ivans-innovation-lab/workflows/my-company-monolith) with seven sequential jobs. The jobs run according to configured requirements, each job waiting to start until the required job finishes successfully. This workflow is configured to wait for manual approval of a job 'approve-production' before continuing by using the`type: approval`key. The`type: approval`key is a special job that is only** **added under your`workflow`key
 
 ![](/assets/Screen Shot 2017-07-16 at 10.40.17 PM.png)
 
 #### Stage
 
-Every push to **master** branch \(every time you merge a feature branch\) will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.42 PM.png)
+Every push to **master** branch \(every time you merge a feature branch\) will trigger the pipeline and the application will be deployed to PWS on '**Stage**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.42 PM.png)Additionally, a current production artifact will be deployed on Stage by 'staging-prod' job for DB schema backward compatibility testing \(we will test old application against new DB schema\)
 
 #### Production
 
-Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)
+Once you are ready to deploy to **production** you should manually approve deployment to production in you CircleCI workflow. This will trigger next job \(production\) and the application will be deployed to PWS on '**Prod**' space:![](/assets/Screen Shot 2017-06-21 at 1.28.58 PM.png)Additionally we will upload an artifact to AWS S3 so we can test DB schema backward compatibility on Stage environment. 
 
 ### Requirements
 
@@ -179,10 +271,12 @@ On each space you have to create instance of ClearDB MySQL service \(database\):
 cf api https://api.run.pivotal.io
 cf auth EMAIL PASSWORD
 cf target -o idugalic -s Stage
-cf create-service cleardb spark mysql-stage
+cf create-service cleardb spark mysql
 cf t -s Prod
-cf create-service cleardb spark mysql-prod
+cf create-service cleardb spark mysql
 ```
+
+NOTE: Instructions to install CloudFoundry CLI \(cf\): [https://docs.cloudfoundry.org/cf-cli/install-go-cli.html](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 
 ### Metrics
 
@@ -232,5 +326,5 @@ As you prepare a new release of your software, deployment and the final stage of
 
 This technique can eliminate downtime due to application deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new release on Green, you can immediately roll back to the last version by switching back to Blue.
 
-Blue-green deployment is not implemented in this lab. You should consider it.
+Blue-green deployment is implemented by 'production' job in the [workflow](https://github.com/ivans-innovation-lab/my-company-monolith/blob/master/.circleci/config.yml).
 
