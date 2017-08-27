@@ -53,7 +53,7 @@ This is why we need another component - web component, which will expose capabil
 ### Web application
  - https://github.com/ivans-innovation-lab/my-company-monolith 
 
-### Technologies
+## Technologies
 
 - [Spring Boot](http://projects.spring.io/spring-boot/) (v1.4.1.RELEASE)
 - [Spring Data](http://projects.spring.io/spring-data/)
