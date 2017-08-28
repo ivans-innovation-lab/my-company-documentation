@@ -15,23 +15,12 @@ We are developing a server-side enterprise application. It will support a variet
 
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Context&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" height="600px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
-<script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
-
-
-
 ## Containers
 
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
 - Database to store events, materialized views and to act as event-bus.
 
-Diagram:
-
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" height="1100px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
-
-<script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
-
-
-
 
 ## Components
 
