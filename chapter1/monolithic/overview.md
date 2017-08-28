@@ -20,7 +20,7 @@ We are developing a server-side enterprise application. It will support a variet
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
 - Database to store events, materialized views and to act as event-bus.
 
-<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" height="1100px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="400px" height="600px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 ## Components
 
@@ -31,7 +31,7 @@ The command-side processes commands. Commands are actions which change state in 
 
 The query-side is an event-listener and processor. It listens for the Events and processes them in whatever way makes the most sense. In this application, the query-side just builds and maintains a materialized view which tracks the state of the individual aggregates (Product, Blog, ...).
 
-<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Components&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" height="600px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Components&diagramSelector=false&iframe=myEmbeddedDiagram" width="400px" height="600px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 <script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
 
