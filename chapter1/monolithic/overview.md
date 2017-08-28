@@ -56,6 +56,8 @@ This is why we need another component - web component, which will expose capabil
 
 ### Web application
  - https://github.com/ivans-innovation-lab/my-company-monolith 
+ 
+![](/assets/MyCompanyWebComponent2.png)
 
 ## Technologies
 
