@@ -20,6 +20,7 @@ We are developing a server-side enterprise application. It will support a variet
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
 - Database to store events, materialized views and to act as event-bus.
 
+
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 
