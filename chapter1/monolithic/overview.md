@@ -8,17 +8,20 @@ Patterns/techniques that are used:
 - Command and Query Responsibility Separation (CQRS)
 - Event Sourcing
 
-<iframe src="https://structurizr.com/embed/22311?diagram=Context&diagramSelector=false" width="600" height="425" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 ## System Context
 
 We are developing a server-side enterprise application. It will support a variety of different clients including desktop browsers, mobile browsers and native mobile applications. This clients will enable employees to manage blog posts, projects information, customers and other data, and it will enable customers to browse the news and submit requests for new interesting projects. The application will also expose an API for 3rd parties (partners) to consume and support B2B. It will also integrate with other systems (Github, LinkedIn, Twitter) via web services to enrich and to share relevant data with them.
 
+<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Context&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 ## Containers
 
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
 - Database to store events, materialized views and to act as event-bus.
+
+<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+
 
 ## Components
 
@@ -28,6 +31,10 @@ Communication between the two components is event-driven and the demo uses simpl
 The command-side processes commands. Commands are actions which change state in some way. The execution of these commands results in Events being generated which are persisted by Axon (using SQL DB - HSQLDB) and propagated out to components. In [event-sourcing](http://microservices.io/patterns/data/event-sourcing.html), events are the sole records in the system. They are used by the system to describe and re-build aggregates on demand, one event at a time.
 
 The query-side is an event-listener and processor. It listens for the Events and processes them in whatever way makes the most sense. In this application, the query-side just builds and maintains a materialized view which tracks the state of the individual aggregates (Product, Blog, ...).
+
+<iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Components&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+
+<script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
 
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
 
