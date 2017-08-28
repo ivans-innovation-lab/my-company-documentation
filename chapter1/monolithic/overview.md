@@ -15,6 +15,10 @@ We are developing a server-side enterprise application. It will support a variet
 
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Context&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
 
+<script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
+
+
+
 ## Containers
 
 - [Web Application](https://github.com/ivans-innovation-lab/my-company-monolith)
@@ -23,6 +27,10 @@ We are developing a server-side enterprise application. It will support a variet
 Diagram:
 
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=false&iframe=myEmbeddedDiagram" width="100%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="false"></iframe>
+
+<script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
+
+
 
 
 ## Components
