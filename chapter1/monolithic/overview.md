@@ -34,13 +34,11 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 ### Project - Command side
  - https://github.com/ivans-innovation-lab/my-company-project-domain
 
-![](/assets/MyCompanyProjectCommandSideComponent2.png)
-
+![](/assets/MyCompanyProjectCommandSideComponent4.png)
 ### Blog Posts - Command side
  - https://github.com/ivans-innovation-lab/my-company-blog-domain
 
-![](/assets/MyCompanyBlogPostCommandSideComponent2.png)
-
+![](/assets/MyCompanyBlogPostCommandSideComponent4.png)
 
 
 ### Project - Query side
