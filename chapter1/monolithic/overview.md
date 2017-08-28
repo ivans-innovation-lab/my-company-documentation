@@ -34,7 +34,7 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 ### Project - Command side
  - https://github.com/ivans-innovation-lab/my-company-project-domain
  
-![](/assets/MyCompanyBlogPostCommandSideComponent (2).png)
+![](/assets/MyCompanyProjectCommandSideComponent.png)
 
 ### Blog Posts - Command side
  - https://github.com/ivans-innovation-lab/my-company-blog-domain
