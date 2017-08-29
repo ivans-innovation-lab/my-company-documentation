@@ -12,15 +12,9 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 This foundation is made up of three elements: software architecture, organization \(culture\), and process.
 
-* Microservices and Monolithic are two different architectural patterns.
-* [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
-* and continuous delivery is the [process](//chapter3/README.md).
-
-The architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
-
 ![](/assets/successtriangle.png)
 
-The architecture enables teams to be agile and autonomous. Together, the team \(of teams\) and the  architecture enable continuous delivery/deployment.
+The architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product. It enables teams to be agile and autonomous. Together, the team \(of teams\) and the architecture enable continuous delivery/deployment.
 
 ## What you will learn
 
