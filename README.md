@@ -12,15 +12,15 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 This foundation is made up of three elements: software architecture, organization \(culture\), and process.
 
-* Microservices is the [architecture](//chapter1/README.md),
+* Microservices and Monolithic are two different architectural patterns.
 * [Organization](//chapter2/README.md) — specifically CALMS \(collaboration, automation, learning, measuring, and sharing\)—is the culture,
 * and continuous delivery is the [process](//chapter3/README.md).
 
-The microservice architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
+The architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product.
 
 ![](/assets/successtriangle.png)
 
-The microservice architecture enables teams to be agile and autonomous. Together, the team of teams and the microservice architecture enable continuous delivery/deployment.
+The architecture enables teams to be agile and autonomous. Together, the team \(of teams\) and the  architecture enable continuous delivery/deployment.
 
 ## What you will learn
 
@@ -31,7 +31,7 @@ You will learn how to visualize, document and explore software architecture.
 We will implement monolithic application first, and migrate to alternate microservices architecture latter. You will find the answers on
 
 * why we are migrating to microservices.
-* how we are going to migrate to microservices and how it will influence on our organization and process.
+* how we are going to migrate to microservices, and how it will influence on our organization and process.
 * how can we design and structure our monolithic application to prepare better for easier migration to microservices in the future.
 
 ## Source Code
