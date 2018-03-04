@@ -68,10 +68,10 @@ This is why we need another component - web component, which will expose capabil
 
 ## Technologies
 
-- [Spring Boot](http://projects.spring.io/spring-boot/) (v1.4.1.RELEASE)
+- [Spring Boot](http://projects.spring.io/spring-boot/) (2.0.0.RELEASE)
 - [Spring Data](http://projects.spring.io/spring-data/)
 - [Spring Data REST](http://projects.spring.io/spring-data-rest/)
-- [Axon Framework](http://www.axonframework.org/) (v3.0-RC1)
+- [Axon Framework](http://www.axonframework.org/) (3.1.3)
 - My SQL / HSQLDB
 
 <script type="text/javascript" src="https://structurizr.com/static/js/structurizr-responsive-embed.js"></script>
