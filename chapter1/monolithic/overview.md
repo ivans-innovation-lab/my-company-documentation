@@ -16,7 +16,7 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Containers
 
-- [Web Application - Frontend - Angular](https://github.com/ivans-innovation-lab/my-company-angular-fe)
+- [UI Application - Frontend - Angular](https://github.com/ivans-innovation-lab/my-company-angular-fe)
 - [Web Application - Backend - REST API](https://github.com/ivans-innovation-lab/my-company-monolith)
 - Database to store events, materialized views and to act as event-bus.
 
