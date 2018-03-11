@@ -90,7 +90,7 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 The command-side and the query-side do not have REST API's.
 This is why we need another component - web component, which will expose capabilities of all other components via REST API, and package application in one _'.war'_ archive by including other components as depended libraries. 
 
-### Web application
+### Web component
  - https://github.com/ivans-innovation-lab/my-company-monolith 
  
 ![](/assets/MyCompanyWebComponent2.png)
