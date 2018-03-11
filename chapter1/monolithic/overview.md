@@ -64,25 +64,28 @@ The query-side is an event-listener and processor. It listens for the Events and
 
 
 
-
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
 
-### Project - Command side
+### Project Command side component
+
  - https://github.com/ivans-innovation-lab/my-company-project-domain
 
 ![](/assets/MyCompanyProjectCommandSideComponent4.png)
-### Blog Posts - Command side
+### Blog Posts Command side component
+
  - https://github.com/ivans-innovation-lab/my-company-blog-domain
 
 ![](/assets/MyCompanyBlogPostCommandSideComponent4.png)
 
 
-### Project - Query side
+### Project Query side component
+
  - https://github.com/ivans-innovation-lab/my-company-project-materialized-view
 
 ![](/assets/MyCompanyProjectQuerySideComponent2.png)
 
-### Blog Posts - Query side
+### Blog Posts Query side component
+
  - https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
 
 ![](/assets/MyCompanyBlogPostQuerySideComponent2.png)
