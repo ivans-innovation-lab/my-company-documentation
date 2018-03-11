@@ -24,9 +24,11 @@ We are developing a server-side enterprise application. It will support a variet
 
 ## Components (Web Application - Frontend - Angular)
 
+We used Angular to implement UI for our solution.
+
 [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) methodology is used, with the help of [Angular material design components](https://material.angular.io).
 
-You can use [StackBlitz](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe) as an online IDE that allows you to live edit and preview the project in-browser: [https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe)
+Additionally, you can use [StackBlitz](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe) as an online IDE to live edit and preview the project in-browser: [https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe)
 
 ### Feature Components vs Presentational Components
 
