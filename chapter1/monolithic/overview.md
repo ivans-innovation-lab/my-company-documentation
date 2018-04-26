@@ -24,7 +24,7 @@ We are developing an enterprise application. It will support a variety of differ
 
 ## Components 
 
-### Web Application - Frontend - Angular _Components_
+### UI Application - Frontend - Angular _Components_
 
 We used Angular to implement UI for our solution.
 
