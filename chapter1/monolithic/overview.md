@@ -22,7 +22,9 @@ We are developing an enterprise application. It will support a variety of differ
 
 <iframe id="myEmbeddedDiagram" src="https://structurizr.com/embed/36994?diagram=Containers&diagramSelector=true&iframe=myEmbeddedDiagram" width="400px" height="600px" marginwidth="0" marginheight="0" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
-## Components (Web Application - Frontend - Angular)
+## Components 
+
+### Web Application - Frontend - Angular
 
 We used Angular to implement UI for our solution.
 
@@ -30,7 +32,7 @@ We used Angular to implement UI for our solution.
 
 Additionally, you can use [StackBlitz](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe) as an online IDE to live edit and preview the project in-browser: [https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe](https://stackblitz.com/github/ivans-innovation-lab/my-company-angular-fe)
 
-### Feature Components vs Presentational Components
+#### Feature Components vs Presentational Components
 
 Feature and Presentational Component Design pattern has been called many things such as:
 
@@ -38,20 +40,24 @@ Feature and Presentational Component Design pattern has been called many things 
  - Smart/Dumb Components
  - Stateful/Stateless Components
  
-#### Feature components
+##### Feature components
 
-A **Feature component** is a top level component that contains all other components in our feature. This commonly is **a routed component** in Angular. Our feature components are responsible for gathering data from various services for our feature to use. If our user saves data the feature component is responsible to pass that data to our Angular Services to save the data to our server API. Feature components are very slim with the amount of application logic. We try to defer this logic to Services if possible. For this example the [`blog.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe/blob/master/src/app/blog/blog.component.ts) is our Feature Component and **it is composed of many Presentational components**.
+A **Feature component** is a top level component that contains all other components in our feature. This commonly is **a routed component** in Angular. Our feature components are responsible for gathering data from various services for our feature to use. If our user saves data the feature component is responsible to pass that data to our Angular Services to save the data to our server API. Feature components are very slim with the amount of application logic. We try to defer this logic to Services if possible. For this example the [`blog.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe-blog/blob/master/libs/blog/src/blog.component.ts) is our Feature Component and **it is composed of many Presentational components**.
 
-#### Presentational components
+[Feature components](https://github.com/search?q=topic%3Afeature+org%3Aivans-innovation-lab&type=Repositories) are packaged in [libs/modules](https://www.npmjs.com/settings/my-company-frontend/packages).
 
-**Presentational Components behave like pure functions** taking in the data via @Input and emitting data via @Output. This allows the majority of our UI to not know the underlying implementation detail of where the data came from. For example a [`side-item.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe/tree/master/src/app/presentational-components/side-menu-item) takes in a @Input of an item to display. This allows the `side-item.component` component to have the only responsibility of rendering the item when the data is passed to it.
+##### Presentational components
+
+**Presentational Components behave like pure functions** taking in the data via @Input and emitting data via @Output. This allows the majority of our UI to not know the underlying implementation detail of where the data came from. For example a [`side-item.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe-presentational-components/blob/master/libs/presentational-components/src/side-menu-item/side-menu-item.component.ts) takes in a @Input of an item to display. This allows the `side-item.component` component to have the only responsibility of rendering the item when the data is passed to it.
 
 Many if not **most Presentational Components can be abstracted into a style guide or UI library** for the project. Using a shared style guide for an organization or project improves reusability, increases the consistency between the different views that form a web application and encourages the communication between the different teams. It can also ensure that a unified brand is used across different products. To get ideas of component design and style guide maintainability I recommend Brad Frost’s book [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/).
 
-There are downsides to this though. As the feature grows in complexity we may have a deeply nested component structure. Since presentation component events only bubble up one level at a time we will have to manually pass up to each parent component. **Introducing other sub feature components** ([`blog-list.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe/tree/master/src/app/blog/blog-list), [`blog-detail.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe/tree/master/src/app/blog/blog-detail), [`blog-new.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe/tree/master/src/app/blog/blog-new)) can help elevate this. The communication between feature components is event driven, and enables loose coupling. For example a `blog-new.component` will trigger an event on successfull creation of a blog post, and `blog-list.component` is subscribed to it so it can re-fetch  and refresh a list of blog posts.
+There are downsides to this though. As the feature grows in complexity we may have a deeply nested component structure. Since presentation component events only bubble up one level at a time we will have to manually pass up to each parent component. **Introducing other sub feature components** ([`blog-list.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe-blog/blob/master/libs/blog/src/blog-list/blog-list.component.ts), [`blog-detail.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe-blog/blob/master/libs/blog/src/blog-detail/blog-detail.component.ts), [`blog-new.component`](https://github.com/ivans-innovation-lab/my-company-angular-fe-blog/blob/master/libs/blog/src/blog-new/blog-new.component.ts)) can help elevate this. The communication between feature components is event driven, and enables loose coupling. For example a `blog-new.component` will trigger an event on successfull creation of a blog post, and `blog-list.component` is subscribed to it so it can re-fetch  and refresh a list of blog posts.
+
+[Presentational components](https://github.com/ivans-innovation-lab/my-company-angular-fe-presentational-components)  are packaged in a [lib/module].(https://www.npmjs.com/package/@my-company-frontend/presentational-components)
 
 
-## Components (Web Application - Backend - REST API)
+### Web Application - Backend - REST API
 
 The domain is literally split into a command-side component and a query-side component (this is [CQRS](http://microservices.io/patterns/data/cqrs.html) in its most literal form).
 Communication between the two components is event-driven and the demo uses simple event store (Database in this case - JPA - HSQLDB) as a means of passing the events between components.
@@ -66,25 +72,25 @@ The query-side is an event-listener and processor. It listens for the Events and
 
 Every component is a separate [maven](https://maven.apache.org/what-is-maven.html) project/library:
 
-### Project Command side component
+#### Project Command side component
 
  - https://github.com/ivans-innovation-lab/my-company-project-domain
 
 ![](/assets/MyCompanyProjectCommandSideComponent4.png)
-### Blog Posts Command side component
+#### Blog Posts Command side component
 
  - https://github.com/ivans-innovation-lab/my-company-blog-domain
 
 ![](/assets/MyCompanyBlogPostCommandSideComponent4.png)
 
 
-### Project Query side component
+#### Project Query side component
 
  - https://github.com/ivans-innovation-lab/my-company-project-materialized-view
 
 ![](/assets/MyCompanyProjectQuerySideComponent2.png)
 
-### Blog Posts Query side component
+#### Blog Posts Query side component
 
  - https://github.com/ivans-innovation-lab/my-company-blog-materialized-view
 
@@ -93,7 +99,7 @@ Every component is a separate [maven](https://maven.apache.org/what-is-maven.htm
 The command-side and the query-side do not have REST API's.
 This is why we need another component - web component, which will expose capabilities of all other components via REST API, and package application in one _'.war'_ archive by including other components as depended libraries. 
 
-### Web component
+#### Web component
  - https://github.com/ivans-innovation-lab/my-company-monolith 
  
 ![](/assets/MyCompanyWebComponent2.png)
