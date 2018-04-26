@@ -24,7 +24,7 @@ We are developing an enterprise application. It will support a variety of differ
 
 ## Components 
 
-### Web Application - Frontend - Angular
+### Web Application - Frontend - Angular _Components_
 
 We used Angular to implement UI for our solution.
 
@@ -57,7 +57,7 @@ There are downsides to this though. As the feature grows in complexity we may ha
 [Presentational components](https://github.com/ivans-innovation-lab/my-company-angular-fe-presentational-components)  are packaged in a [lib/module].(https://www.npmjs.com/package/@my-company-frontend/presentational-components)
 
 
-### Web Application - Backend - REST API
+### Web Application - Backend - REST API _Components_
 
 The domain is literally split into a command-side component and a query-side component (this is [CQRS](http://microservices.io/patterns/data/cqrs.html) in its most literal form).
 Communication between the two components is event-driven and the demo uses simple event store (Database in this case - JPA - HSQLDB) as a means of passing the events between components.
