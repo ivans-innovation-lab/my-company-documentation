@@ -1,16 +1,6 @@
 # Introduction
 
-For some executives, digital is a new way of engaging with customers. For others, it’s about technology
-
-{% tabs %}
-{% tab title="First Tab" %}
-`My first tab content`
-{% endtab %}
-
-{% tab title="Second Tab" %}
-My second tab content
-{% endtab %}
-{% endtabs %}
+For some executives, digital is a new way of engaging with customers. For others, it’s about technology.
 
 It’s tempting to look for simple definitions, but to be meaningful and sustainable, I believe that digital should be seen less as a thing and more a way of doing things. To help make this definition more concrete, I have broken it down into three attributes:
 
