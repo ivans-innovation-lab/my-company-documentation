@@ -1,16 +1,6 @@
 # Introduction
 
-For some executives, digital is a new way of engaging with customers. For others, it’s about technology
-
-{% tabs %}
-{% tab title="First Tab" %}
-My first tab content
-{% endtab %}
-
-{% tab title="Second Tab" %}
-My second tab content
-{% endtab %}
-{% endtabs %}
+For some executives, digital is a new way of engaging with customers. For others, it’s about technology.
 
 It’s tempting to look for simple definitions, but to be meaningful and sustainable, I believe that digital should be seen less as a thing and more a way of doing things. To help make this definition more concrete, I have broken it down into three attributes:
 
@@ -22,7 +12,7 @@ It’s tempting to look for simple definitions, but to be meaningful and sustain
 
 This foundation is made up of three elements: software architecture, organization \(culture\), and process.
 
-![](.gitbook/assets/successtriangle.png)
+![](../.gitbook/assets/successtriangle.png)
 
 The architecture is merely a means to an end. The ultimate goal is to deliver better software faster. Today, that invariably means continuous delivery – for an installed product – or continuous deployment for an -aaS product. It enables teams to be agile and autonomous. Together, the team \(of teams\) and the architecture enable continuous delivery/deployment.
 

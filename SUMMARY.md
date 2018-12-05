@@ -1,4 +1,6 @@
-# Summary
+# Table of contents
+
+* [Introduction](README.md)
 
 ## Links
 
@@ -7,25 +9,25 @@
 
 ## Table Of Contents
 
-* [Introduction](README.md)
-* [Chapter 1 - Architecture](/chapter1/README.md)
-  * [Architecture Patterns](/chapter1/architecture-patterns-and-best-practices.md)
-  * [Visualize Your Architecture](/chapter1/visualize-your-architecture.md)
-  * [Monolithic Architecture](/chapter1/monolithic/README.md)
-    * [Architecture Overview](/chapter1/monolithic/overview.md)
-  * [Microservice Architecture](/chapter1/microservices/README.md)
-    * [Architecture Overview](/chapter1/microservices/overview.md)
-* [Chapter 2 - Organization](/chapter2/README.md)
-* [Chapter 3 - Process](/chapter3/README.md)
-  * [Infrastructure](chapter3/infrastructure-as-code.md)
-    * [Public Cloud](chapter3/infrastructure-as-code/public-cloud.md)
-    * [Private Cloud](chapter3/infrastructure-as-code/private-cloud.md)
-  * [Branching strategy](chapter3/branching-strategy.md)
-  * [Monolithic Deployment Pipeline](chapter3/monolithic-delivery-pattern.md)
-    * [Public Cloud](chapter3/monolithic-delivery-pattern/public-cloud.md)
-    * [Private Cloud](chapter3/monolithic-delivery-pattern/private-cloud.md)
-  * [Microservices Deployment Pipeline](chapter3/microservices-delivery-pattern.md)
-    * [Public Cloud](chapter3/microservices-delivery-pattern/public-cloud.md)
-    * [Private Cloud](chapter3/microservices-delivery-pattern/private-cloud.md)
-* [References](references.md)
+* [Introduction](table-of-contents/readme.md)
+* [Chapter 1 - Architecture](table-of-contents/chapter1/README.md)
+  * [Architecture Patterns](table-of-contents/chapter1/architecture-patterns-and-best-practices.md)
+  * [Visualize Your Architecture](table-of-contents/chapter1/visualize-your-architecture.md)
+  * [Monolithic Architecture](table-of-contents/chapter1/monolithic/README.md)
+    * [Architecture Overview](table-of-contents/chapter1/monolithic/overview.md)
+  * [Microservice Architecture](table-of-contents/chapter1/microservices/README.md)
+    * [Architecture Overview](table-of-contents/chapter1/microservices/overview.md)
+* [Chapter 2 - Organization](table-of-contents/chapter2.md)
+* [Chapter 3 - Process](table-of-contents/chapter3/README.md)
+  * [Infrastructure](table-of-contents/chapter3/infrastructure-as-code/README.md)
+    * [Public Cloud](table-of-contents/chapter3/infrastructure-as-code/public-cloud.md)
+    * [Private Cloud](table-of-contents/chapter3/infrastructure-as-code/private-cloud.md)
+  * [Branching strategy](table-of-contents/chapter3/branching-strategy.md)
+  * [Monolithic Deployment Pipeline](table-of-contents/chapter3/monolithic-delivery-pattern/README.md)
+    * [Public Cloud](table-of-contents/chapter3/monolithic-delivery-pattern/public-cloud.md)
+    * [Private Cloud](table-of-contents/chapter3/monolithic-delivery-pattern/private-cloud.md)
+  * [Microservices Deployment Pipeline](table-of-contents/chapter3/microservices-delivery-pattern/README.md)
+    * [Public Cloud](table-of-contents/chapter3/microservices-delivery-pattern/public-cloud.md)
+    * [Private Cloud](table-of-contents/chapter3/microservices-delivery-pattern/private-cloud.md)
+* [References](table-of-contents/references.md)
 
