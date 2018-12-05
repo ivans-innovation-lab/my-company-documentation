@@ -4,7 +4,7 @@ For some executives, digital is a new way of engaging with customers. For others
 
 {% tabs %}
 {% tab title="First Tab" %}
-My first tab content
+`My first tab content`
 {% endtab %}
 
 {% tab title="Second Tab" %}
